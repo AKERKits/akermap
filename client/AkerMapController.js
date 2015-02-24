@@ -1,3 +1,5 @@
+require('./geoLocationService');
+
 var mapStyles = require('./map/styles/avocado.json');
 
 require('./akermap').controller('AkerMapController', function($scope, geoLocation) {
