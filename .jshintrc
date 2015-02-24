@@ -1,0 +1,8 @@
+{
+  "maxerr"        : 50,
+  
+  "bitwise"       : true,
+  "camelcase"     : true,
+  "curly"         : true,
+  "eqeqeq"        : true
+}

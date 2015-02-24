@@ -13,6 +13,6 @@ charset = utf-8
 indent_style = space
 indent_size = 4
 
-[{package.json,bower.json,.travis.yml}]
+[{package.json,bower.json,.travis.yml,.jshintrc}]
 indent_style = space
 indent_size = 2
