@@ -1,9 +1,19 @@
 require('./geoLocationService');
-
-var mapStyles = require('./map/styles/avocado.json');
-
 require('./akermap').controller('AkerMapController', function($scope, geoLocation) {
     'use strict';
+
+    $scope.categories = [
+        'bees',
+        'beekeeping_equipment',
+        'chickens',
+        'plants',
+        'seeds',
+        'soil',
+        'worms',
+        'other'
+    ];
+
+    $scope.selectedCategories = angular.copy($scope.categories);
 
 	geoLocation()
     .then(
@@ -29,7 +39,16 @@ require('./akermap').controller('AkerMapController', function($scope, geoLocatio
     });
 
 
-    $scope.options = {
-        styles: mapStyles
+    $scope.mapOptions = {
+        styles: require('./map/styles/avocado.json')
+    };
+
+    $scope.layerOptions = {
+        query: {
+            from: '1tteiG-HYAlsmh3ef5U-XVDEWu5QXqDxqWwDx-pc',
+            //from: "1d8ppDMgF_ruJB1X8JMtHBkrA0Kt9xdnzjQ4zGiDp",
+            select: "Location",
+            //where: "'Produce' IN ('bees','beekeeping_equipment','chickens','plants','seeds','worms','other')"
+        }
     };
 });
