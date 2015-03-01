@@ -1,4 +1,5 @@
-require('./akermap').factory('geoLocation', ['$q', function($q) {
+require('./akermap').factory('geoLocationService', ['$q', function($q) {
+	'use strict';
 
 	return function() {
 		var d = $q.defer();

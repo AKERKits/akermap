@@ -1,8 +1,18 @@
 {
   "maxerr"        : 50,
-  
+
   "bitwise"       : true,
   "camelcase"     : true,
   "curly"         : true,
-  "eqeqeq"        : true
+  "eqeqeq"        : true,
+  "undef"         : true,
+  "strict"        : true,
+
+  "browser"       : true,
+
+  "globals"       : {
+    "require": true,
+    "module": true,
+    "angular": true
+  }
 }

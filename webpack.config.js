@@ -1,10 +1,18 @@
-var path = require("path");
-var webpack = require("webpack");
-module.exports = {
+module.exports = (function() {
+	'use strict';
+
+	var path = require("path");
+	var webpack = require("webpack");
+	var BowerWebpackPlugin = require("bower-webpack-plugin");
+	var AngularWebpackPlugin = require('angular-webpack-plugin');
+
+	var clientDir = path.resolve(__dirname, './client');
+
+return {
 	cache: true,
+	watch: true,
 	entry: {
 		bootstrap: [
-    //  'webpack/hot/dev-server',
       "./client/entry.js"
     ]
 	},
@@ -15,10 +23,19 @@ module.exports = {
 		chunkFilename: "[chunkhash].js"
 	},
 	module: {
+		noParse: [
+			/angular-translate\/angular-translate\.js/,
+		],
 		loaders: [
 			// required to write "require('./style.css')"
 			{ test: /\.css$/,    loader: "style-loader!css-loader" },
-      { test: /map\/styles\/.*\.json$/,    loader: "json" }, // loader for map styles
+			{ test: /map\/styles\/.*\.json$/,    loader: "json" }, // loader for map styles
+			{ test: /data\/.*\.json$/,    loader: "json" },
+			{ test: /modernizr\.js$/, loader: 'imports?this=>window' },
+			{ test: /respond\.src\.js$/, loader: 'imports?this=>window' },
+			{ test: /ng-table\.js/, loader: 'imports?define=>null'},
+
+			{ test: /templates\/.*\.html$/, loader: "ngtemplate?relativeTo="+clientDir+"!html" }
 
 			// required for bootstrap icons
 			//{ test: /\.woff$/,   loader: "url-loader?prefix=font/&limit=5000&mimetype=application/font-woff" },
@@ -32,8 +49,13 @@ module.exports = {
 		]
 	},
 	resolve: {
-    root: [path.join(__dirname, "bower_components")],
+		root: [
+			path.resolve('bower_components')
+		],
 		alias: {
+			'ngTable': 'ng-table/dist/ng-table.js',
+			'pascalprecht.translate': 'angular-translate',
+			'uiGmapgoogle-maps': 'angular-google-maps'
 			// Bind version of jquery
 			//jquery: "jquery-2.0.3",
 
@@ -46,18 +68,24 @@ module.exports = {
 		}
 	},
 	plugins: [
+	new AngularWebpackPlugin(),
     new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
     ),
-    new webpack.HotModuleReplacementPlugin()
-    /*
+
+    new webpack.HotModuleReplacementPlugin(),
+
+
 		new webpack.ProvidePlugin({
 			// Automtically detect jQuery and $ as free var in modules
 			// and inject the jquery library
 			// This is required by many jquery plugins
-			jQuery: "jquery",
-			$: "jquery"
+			//jQuery: "jquery",
+			//$: "jquery"
+			//angular: 'angular',
+			//'window.angular': 'angular'
 		})
-    */
+
 	]
 };
+})();

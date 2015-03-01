@@ -11,33 +11,32 @@
 
         <script src="assets/bootstrap.js"></script>
     </head>
-    <body ng-controller="AkerMapController">
+    <body main>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title">h1.title</h1>
-                <nav>
-                    <ul>
-                        <li ng-repeat="category in categories">
-                          <input type="checkbox" ng-checked="true" ng-model="selectedCategories[$index]" id="cat_{{category}}" ng-true-value="'{{category}}'">
-                          <label for="cat_{{category}}" translate>{{ 'CATEGORY_' + category.toUpperCase() }}</label></li>
-                    </ul>
-                </nav>
+                <h1 class="title" translate>The AKER map</h1>
             </header>
             {{selectedCategories}}
         </div>
 
-
+        <input type="text" ng-model="searchText">
         <div class="main-container">
             <div class="main wrapper clearfix">
                 <article>
-                  <ui-gmap-google-map center='map.center' zoom='map.zoom' options="mapOptions">
-                      <ui-gmap-layer type='FusionTablesLayer' options='layerOptions' show='true'>
-                      </ui-gmap-layer>
-                  </ui-gmap-google-map>
+                  <aker-map/>
+                  
+
+                  <table ng-table>
+
+                  <tr ng-repeat="marker in markers">
+                    <!-- <td data-title="'ID'">{{marker.$id}}</td> -->
+                    <td data-title="'Categories' | translate">{{marker.categories.join(', ')}}</td>
+                  </tr>
+                  </table>
                   <!--
                     <header>
                         <h1>article header h1</h1>
@@ -60,7 +59,9 @@
 
                 <aside>
                     <h3>aside</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.</p>
+                    <p>
+                      <category-filter/>
+                    </p>
                 </aside>
 
             </div> <!-- #main -->

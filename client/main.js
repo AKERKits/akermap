@@ -1,2 +1,4 @@
 require('./config');
-require('./AkerMapController');
+require('./mainDirective');
+require('./akerMapDirective');
+require('./categoryFilterDirective');

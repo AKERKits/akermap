@@ -1,0 +1,16 @@
+[
+	{
+		"latitude": 39.7643389,
+		"longitude": -104.8551114,
+		"categories": ["bees", "chickens"],
+		"title": "what",
+		"$id": 1
+	},
+	{
+		"latitude": 39.7443389,
+		"longitude": -104.8551114,
+		"categories": ["seeds", "beekeeping_equipment"],
+		"title": "ever",
+		"$id": 2
+	}
+]
