@@ -9,7 +9,7 @@ require('./akermap').directive('akerMap', function(geoLocationService, mapData, 
         restrict: 'E',
         require: '^main',
         templateUrl: require('./templates/akerMapDirective.html'),
-        link: function($scope, element, attrs, mainCtrl) {
+        link: function($scope) {
 
             $scope.map = {
                 refresh: false,

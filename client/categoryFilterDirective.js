@@ -17,7 +17,7 @@ require('./akermap')
             restrict: 'E',
             require: '^main',
             templateUrl: require('./templates/categoryFilterDirective.html'),
-            link: function(scope, element, attrs, mainCtrl) {
+            link: function(scope) {
                 scope.categories = categoryArray;
                 scope.selected = angular.copy(categoryArray);
 
