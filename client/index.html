@@ -27,16 +27,12 @@
         <div class="main-container">
             <div class="main wrapper clearfix">
                 <article>
-                  <aker-map/>
-                  
-
-                  <table ng-table>
-
-                  <tr ng-repeat="marker in markers">
-                    <!-- <td data-title="'ID'">{{marker.$id}}</td> -->
-                    <td data-title="'Categories' | translate">{{marker.categories.join(', ')}}</td>
-                  </tr>
-                  </table>
+                  <section>
+                    <aker-map/>
+                  </section>
+                  <section>
+                    <aker-table/>
+                  </section>
                   <!--
                     <header>
                         <h1>article header h1</h1>
