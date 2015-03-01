@@ -1,5 +1,8 @@
 var Firebase = require('exports?Firebase!firebase');
 var _ = require('lodash');
+var categories = require('./data/categories.json');
+
+/* global google */
 require('./akermap')
     .factory('mapData', function(firebaseLocation, $firebase, $q, $log) {
         'use strict';
@@ -39,15 +42,39 @@ require('./akermap')
           var self = this;
           current = $q.defer();
           loadInitial()
+            .then(function clone(list) {
+                return angular.copy(list);
+            })
             .then(function applyCategoryFilter(list) {
                 var selectedCategories = self.getCategoryFilter();
                 if (selectedCategories !== null && selectedCategories.length > 0) {
                   return list.filter(function(item) {
                       // if we have at least one matching category, it is part of the result
-                      return _.intersection(item.categories, selectedCategories).length > 0;
+                      var intersectingCategories = _.intersection(item.categories, selectedCategories);
+                      if (intersectingCategories.length === 0) {
+                          return false;
+                      }
+                      item.categories = intersectingCategories;
+                      return true;
                   });
                 }
                 return list;
+            })
+            .then(function setIcons(list) {
+                return list.map(function(item) {
+                    var category = 'other';
+                    if (item.categories.length === 1) {
+                        // we can define a specific icon
+                        category = item.categories[0];
+                    }
+                    var iconData = categories[category].icon;
+                    item.icon = {
+                        url: iconData.url,
+                        size: new google.maps.Size(iconData.size.w, iconData.size.h),
+                        scaledSize: new google.maps.Size(iconData.scaled.w, iconData.scaled.h)
+                    };
+                    return item;
+                });
             })
             .then(current.resolve);
 
