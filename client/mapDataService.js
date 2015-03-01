@@ -54,7 +54,8 @@ require('./akermap')
                       if (intersectingCategories.length === 0) {
                           return false;
                       }
-                      item.categories = intersectingCategories;
+                      $log.debug(item.categories, selectedCategories, 'intersecting:', intersectingCategories);
+                      item.intersecting = intersectingCategories;
                       return true;
                   });
                 }
@@ -63,28 +64,35 @@ require('./akermap')
             .then(function setIcons(list) {
                 return list.map(function(item) {
                     var category = 'other';
-                    if (item.categories.length === 1) {
+                    if (item.intersecting && item.intersecting.length === 1) {
                         // we can define a specific icon
+                        category = item.intersecting[0];
+                    } else if(item.categories.length === 1) {
                         category = item.categories[0];
                     }
+
                     var iconData = categories[category].icon;
+                    console.log(category, iconData);
                     item.icon = {
                         url: iconData.url,
                         size: new google.maps.Size(iconData.size.w, iconData.size.h),
                         scaledSize: new google.maps.Size(iconData.scaled.w, iconData.scaled.h)
                     };
+                    item.id = item.$id + '_' + category;
                     return item;
                 });
             })
-            .then(current.resolve);
+            .then(function(list) {
+                current.resolve(list);
+            });
 
           return current.promise;
       };
 
       MapDataService.prototype.setCategoryFilter = function(categories) {
           $log.debug('setting filter to',  categories);
-          this.categoryFilter = categories;
           current = null;
+          this.categoryFilter = categories;
       };
 
       MapDataService.prototype.getCategoryFilter = function() {
