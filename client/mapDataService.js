@@ -2,9 +2,8 @@ var Firebase = require('exports?Firebase!firebase');
 var _ = require('lodash');
 var categories = require('./data/categories.json');
 
-/* global google */
 require('./akermap')
-    .factory('mapData', function(firebaseLocation, $firebase, $q, $log) {
+    .factory('mapData', function(firebaseLocation, $firebase, $q, $log, uiGmapGoogleMapApi) {
         'use strict';
 
         var ref = new Firebase(firebaseLocation);
@@ -62,24 +61,26 @@ require('./akermap')
                 return list;
             })
             .then(function setIcons(list) {
-                return list.map(function(item) {
-                    var category = 'other';
-                    if (item.intersecting && item.intersecting.length === 1) {
-                        // we can define a specific icon
-                        category = item.intersecting[0];
-                    } else if(item.categories.length === 1) {
-                        category = item.categories[0];
-                    }
+                return uiGmapGoogleMapApi.then(function(maps) {
+                    return list.map(function(item) {
+                        var category = 'other';
+                        if (item.intersecting && item.intersecting.length === 1) {
+                            // we can define a specific icon
+                            category = item.intersecting[0];
+                        } else if(item.categories.length === 1) {
+                            category = item.categories[0];
+                        }
 
-                    var iconData = categories[category].icon;
-                    item.icon = {
-                        url: iconData.url,
-                        size: new google.maps.Size(iconData.size.w, iconData.size.h),
-                        scaledSize: new google.maps.Size(iconData.scaled.w, iconData.scaled.h),
-                        anchor: new google.maps.Point(iconData.anchor.x, iconData.anchor.y)
-                    };
-                    item.id = item.$id + '_' + category;
-                    return item;
+                        var iconData = categories[category].icon;
+                        item.icon = {
+                            url: iconData.url,
+                            size: new maps.Size(iconData.size.w, iconData.size.h),
+                            scaledSize: new maps.Size(iconData.scaled.w, iconData.scaled.h),
+                            anchor: new maps.Point(iconData.anchor.x, iconData.anchor.y)
+                        };
+                        item.id = item.$id + '_' + category;
+                        return item;
+                    });
                 });
             })
             .then(function(list) {
