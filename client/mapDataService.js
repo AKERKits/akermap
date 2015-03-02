@@ -75,7 +75,8 @@ require('./akermap')
                     item.icon = {
                         url: iconData.url,
                         size: new google.maps.Size(iconData.size.w, iconData.size.h),
-                        scaledSize: new google.maps.Size(iconData.scaled.w, iconData.scaled.h)
+                        scaledSize: new google.maps.Size(iconData.scaled.w, iconData.scaled.h),
+                        anchor: new google.maps.Point(iconData.anchor.x, iconData.anchor.y)
                     };
                     item.id = item.$id + '_' + category;
                     return item;

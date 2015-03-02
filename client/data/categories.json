@@ -1,106 +1,139 @@
 {
-	"bees": {
+  "bees": {
+    "icon": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+
+      },
+      "url": "images/icons/bees.svg"
+    }
+  },
+  "beekeeping_equipment": {
+    "icon": {
+			"size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/icons/beekeeping_equipment.svg"
+    }
+  },
+  "chickens": {
+    "icon": {
+			"size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/icons/chickens.svg"
+    }
+  },
+  "plants": {
+    "icon": {
+			"size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/icons/plants.svg"
+    }
+  },
+  "seeds": {
+    "icon": {
+			"size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/icons/seeds.svg"
+    }
+  },
+  "soil": {
 		"icon": {
 			"size": {
-				"w": 100,
-				"h": 63.6
-			},
-			"scaled": {
-				"w": 22,
-				"h": 22
-			},
-			"url": "images/icons/noun_6063.svg"
-		}
-	},
-	"beekeeping_equipment": {
-		"icon": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/icons/soil.svg"
+    }
+  },
+  "worms": {
+    "icon": {
 			"size": {
-				"w": 100,
-				"h": 100
-			},
-			"scaled": {
-				"w": 22,
-				"h": 22
-			},
-			"url": "images/icons/noun_42180.svg"
-		}
-	},
-	"chickens": {
-		"icon": {
-			"size": {
-				"w": 100,
-				"h": 100
-			},
-			"scaled": {
-				"w": 22,
-				"h": 22
-			},
-			"url": "images/icons/noun_11063.svg"
-		}
-	},
-	"plants": {
-		"icon": {
-			"size": {
-				"w": 91.333,
-				"h": 100
-			},
-			"scaled": {
-				"w": 20.09326,
-				"h": 22
-			},
-			"url": "images/icons/noun_4223.svg"
-		}
-	},
-	"seeds": {
-		"icon": {
-			"size": {
-				"w": 100,
-				"h": 100
-			},
-			"scaled": {
-				"w": 22,
-				"h": 22
-			},
-			"url": "images/icons/noun_41684.svg"
-		}
-	},
-	"soil": {
-		"icon": {
-			"size": {
-				"w": 100,
-				"h": 86.687
-			},
-			"scaled": {
-				"w": 22,
-				"h": 19.07114
-			},
-			"url": "images/icons/noun_4271.svg"
-		}
-	},
-	"worms": {
-		"icon": {
-			"size": {
-				"w": 100,
-				"h": 100
-			},
-			"scaled": {
-				"w": 22,
-				"h": 22
-			},
-			"url": "images/icons/noun_41677.svg"
-		}
-	},
-	"other": {
-		"icon": {
-			"size": {
-				"w": 100,
-				"h": 76.179
-			},
-			"scaled": {
-				"w": 22,
-				"h": 16.76334
-			},
-			"url": "images/icons/noun_629.svg"
-		}
-	}
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/icons/worms.svg"
+    }
+  },
+  "other": {
+    "icon": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/icons/other.svg"
+    }
+  }
 }
