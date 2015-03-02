@@ -2,7 +2,7 @@ require('./geoLocationService');
 require('./mapDataService');
 var styles = require('./map/styles/avocado.json');
 
-require('./akermap').directive('akerMap', function(geoLocationService, mapData, $log) {
+require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q) {
     'use strict';
 
     return {
@@ -13,30 +13,28 @@ require('./akermap').directive('akerMap', function(geoLocationService, mapData, 
 
             $scope.map = {
                 refresh: false,
-              bounds: {}
+                bounds: {}
             };
-
+            $scope.mapOptions = {};
             $scope.markers = [];
 
             function updateMarkers() {
-                mapData.get().then(function(list) {
+                return mapData.get().then(function(list) {
                     $scope.markers = list;
                 });
             }
-            updateMarkers();
 
             $scope.$on('updateFilters', function() {
                 $log.debug('updating markers and refreshing map');
-                updateMarkers();
-                $scope.map.refresh = true;
+                updateMarkers().then(function() {
+                    $scope.map.refresh = true;
+                });
             });
-
 
             // test data
             // $scope.markers = require('./data/bogus.json');
-
-            geoLocationService()
-                .then(
+            function locate() {
+                return geoLocationService().then(
                     function success(geoLocatedCoords) {
                         return {
                           center: geoLocatedCoords,
@@ -53,15 +51,30 @@ require('./akermap').directive('akerMap', function(geoLocationService, mapData, 
                           zoom: 9
                         };
                     }
-                )
-                .then(function(map) {
-                    angular.extend($scope.map, map);
+                );
+            }
+
+            $q.all({
+                map: locate(),
+                markers: updateMarkers(),
+                maps: uiGmapGoogleMapApi
+            }).then(function(data) {
+                var map = data.map;
+                var maps = data.maps;
+
+                angular.extend($scope.mapOptions, {
+                    styles: styles,
+                    disableDefaultUI: true,
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        style: maps.ZoomControlStyle.LARGE,
+                        position: maps.ControlPosition.TOP_RIGHT
+                    },
+                    streetViewControl: true
                 });
 
-            $scope.mapOptions = {
-                scrollwheel: false,
-                styles: styles
-            };
+                angular.extend($scope.map, map);
+            });
         }
     };
 
