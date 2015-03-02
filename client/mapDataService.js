@@ -72,7 +72,6 @@ require('./akermap')
                     }
 
                     var iconData = categories[category].icon;
-                    console.log(category, iconData);
                     item.icon = {
                         url: iconData.url,
                         size: new google.maps.Size(iconData.size.w, iconData.size.h),
