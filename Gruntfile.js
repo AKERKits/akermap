@@ -1,4 +1,6 @@
+/* global __dirname */
 module.exports = function(grunt) {
+  'use strict';
 
   var webpackConfig = require("./webpack.config.js");
 
@@ -40,20 +42,20 @@ module.exports = function(grunt) {
       }
     },
     "webpack-dev-server": {
-			options: {
-				webpack: webpackConfig,
-				publicPath: "/" + webpackConfig.output.publicPath,
-        contentBase: 'client/',
-			},
-			start: {
-				keepAlive: true,
-				webpack: {
-          inline: true,
-					devtool: "eval",
-					debug: true
-				}
-			}
-		}
+        options: {
+            webpack: webpackConfig,
+            publicPath: "/" + webpackConfig.output.publicPath,
+            contentBase: 'client/',
+        },
+        start: {
+            keepAlive: true,
+            webpack: {
+                inline: true,
+                devtool: "eval",
+                debug: true
+            }
+        }
+    }
   });
 
   grunt.loadNpmTasks('grunt-webpack');

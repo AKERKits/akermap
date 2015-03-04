@@ -1,6 +1,6 @@
 {
   "name": "akermap",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "authors": [
     "Joscha Feth <joscha@feth.com>"
   ],
@@ -20,5 +20,10 @@
     "angular-translate-loader-static-files": "~2.6.0",
     "angularfire": "1.0.0",
     "ng-table": "~0.5.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AKERKits/akermap.git"
+  },
+  "private": true
 }

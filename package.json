@@ -1,14 +1,15 @@
 {
   "name": "akermap",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/grunt-cli/bin/grunt"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Joscha Feth <joscha@feth.com>",
+  "license": "MIT",
   "devDependencies": {
     "angular-webpack-plugin": "0.0.3",
     "css-loader": "^0.9.1",
@@ -29,5 +30,9 @@
   },
   "dependencies": {
     "normalize.css": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AKERKits/akermap.git"
   }
 }
