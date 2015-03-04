@@ -19,7 +19,9 @@
     "angular-translate": "~2.6.0",
     "angular-translate-loader-static-files": "~2.6.0",
     "angularfire": "1.0.0",
-    "ng-table": "~0.5.4"
+    "ng-table": "~0.5.4",
+    "socialite-js": "2.1",
+    "elements": "git@github.com:dmitryf/elements.git"
   },
   "repository": {
     "type": "git",

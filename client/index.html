@@ -49,32 +49,51 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="header-container">
-            <header class="wrapper clearfix">
-                <h1 class="title" translate>The AKER map</h1>
-            </header>
-        </div>
-        <div class="main-container">
-            <div class="main wrapper clearfix">
-                <article>
-                  <section>
-                    <aker-map/>
-                  </section>
-                  <!--
-                    <footer>
-                      <aker-table/>
-                    </footer>
-                  -->
-                </article>
-
-                <aside>
-                    <h3>aside</h3>
-                    <p>
-                      <category-filter/>
-                    </p>
-                </aside>
-
+        <aside class="control">
+          <header>
+            <h1 class="title" translate>The AKER map</h1>
+          </header>
+          <article class="filter">
+            <category-filter/>
+          </article>
+          <footer>
+            <div class="social-links">
+              <a class="socialite facebook-like"  href="http://www.facebook.com/sharer.php?u=http://map.aker.me"
+                                             data-href="http://map.aker.me"
+                                             data-send="false"
+                                           data-layout="button_count"
+                                            data-width="100"
+                                       data-show-faces="false"
+                                             data-font="segoe ui"
+                                                   rel="nofollow"
+                                                target="_blank">Share on Facebook</a>
+              |
+              <a class="socialite github-fork"    href="https://github.com/AKERKits/akermap"
+                                             data-user="AKERKits"
+                                             data-repo="akermap"
+                                             data-type="fork"
+                                            data-count="true"
+                                            target="_blank">Fork on GitHub</a>
+              |
+              <a class="socialite twitter-share"  href="http://twitter.com/share"
+                                              data-url="http://map.aker.me"
+                                              data-dnt="true"
+                                                   rel="nofollow"
+                                                target="_blank">Share on Twitter</a>
             </div>
-        </div>
+            </footer>
+        </aside>
+
+        <article>
+          <section>
+            <aker-map/>
+          </section>
+          <!--
+            <footer>
+              <aker-table/>
+            </footer>
+          -->
+        </article>
+
     </body>
 </html>

@@ -3,3 +3,7 @@ require('./mainDirective');
 require('./akerMapDirective');
 require('./akerTableDirective');
 require('./categoryFilterDirective');
+require('socialite-js/socialite.js');
+require('socialite-js/extensions/socialite.facebook.js');
+require('socialite-js/extensions/socialite.twitter.js');
+require('socialite-js/extensions/socialite.github.js');
