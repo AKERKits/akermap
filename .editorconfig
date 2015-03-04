@@ -15,6 +15,6 @@ indent_size = 4
 [*.json]
 indent_style = tab
 
-[{package.json,bower.json,.travis.yml,.jshintrc}]
+[{package.json,bower.json,.jshintrc}]
 indent_style = space
 indent_size = 2
