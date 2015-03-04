@@ -35,7 +35,8 @@ module.exports = (function() {
 				{ test: /modernizr\.js$/, loader: 'imports?this=>window' },
 				{ test: /respond\.src\.js$/, loader: 'imports?this=>window' },
 				{ test: /ng-table\.js/, loader: 'imports?define=>null'},
-				{ test: /templates\/.*\.html$/, loader: "ngtemplate?relativeTo="+clientDir+"!html" }
+				{ test: /templates\/.*\.html$/, loader: "ngtemplate?relativeTo="+clientDir+"!html" },
+				{ test: /\.less$/, loader: "style-loader!css-loader!less-loader" }
 			]
 		},
 		resolve: {
