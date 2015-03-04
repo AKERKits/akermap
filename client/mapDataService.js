@@ -41,9 +41,7 @@ require('./akermap')
           var self = this;
           current = $q.defer();
           loadInitial()
-            .then(function clone(list) {
-                return angular.copy(list);
-            })
+            .then(angular.copy)
             .then(function applyCategoryFilter(list) {
                 var selectedCategories = self.getCategoryFilter();
                 if (selectedCategories !== null && selectedCategories.length > 0) {
@@ -83,9 +81,7 @@ require('./akermap')
                     });
                 });
             })
-            .then(function(list) {
-                current.resolve(list);
-            });
+            .then(current.resolve);
 
           return current.promise;
       };
