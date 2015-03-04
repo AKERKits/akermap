@@ -70,7 +70,7 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                         style: maps.ZoomControlStyle.LARGE,
                         position: maps.ControlPosition.TOP_RIGHT
                     },
-                    streetViewControl: true
+                    streetViewControl: false
                 });
 
                 angular.extend($scope.map, map);
