@@ -25,9 +25,9 @@
 
   "browser"       : true,
 
-  "globals"       : {
-    "require": true,
-    "module": true,
-    "angular": true
-  }
+  "predef"       : [
+    "require",
+    "module",
+    "angular"
+  ]
 }
