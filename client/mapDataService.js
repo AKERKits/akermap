@@ -24,9 +24,12 @@ require('./akermap')
                   categories: ['bees', 'chickens']
           });
           */
-
+          Firebase.goOnline();
           var sync = $firebaseArray(locationsRef);
-          sync.$loaded().then(data.resolve);
+          sync.$loaded().then(function(list) {
+              Firebase.goOffline();
+              data.resolve(list);
+          });
           return data.promise;
       }
 
