@@ -9,11 +9,43 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
         restrict: 'E',
         require: '^main',
         templateUrl: require('./templates/akerMapDirective.html'),
-        link: function($scope) {
+        link: function($scope, element, attrs, mainCtrl) {
+
+            $scope.clickedMarkerClick = function() {
+                $scope.map.clickedMarker.latitude = $scope.map.clickedMarker.longitude = null;
+                mainCtrl.toggleShowAddResourceForm(true);
+            };
 
             $scope.map = {
                 refresh: false,
-                bounds: {}
+                bounds: {},
+                clickedMarker: {
+                    id: 0,
+                    options:{
+                    }
+                },
+                events: {
+                    click: function (mapModel, eventName, originalEventArgs) {
+                              // 'this' is the directive's scope
+                              $log.info("user defined event: " + eventName, mapModel, originalEventArgs);
+
+                              var e = originalEventArgs[0];
+                              var lat = e.latLng.lat(),
+                                lon = e.latLng.lng();
+                              $scope.map.clickedMarker = {
+                                id: 0,
+                                options: {
+                                  labelContent: 'Click to add your resource here: ' + 'lat: ' + lat + ' lon: ' + lon,
+                                  //labelClass: "marker-labels",
+                                  labelAnchor:"50 0"
+                                },
+                                latitude: lat,
+                                longitude: lon
+                              };
+                              //scope apply required because this event handler is outside of the angular domain
+                              $scope.$apply();
+                            }
+                }
             };
             $scope.mapOptions = {};
             $scope.markers = [];

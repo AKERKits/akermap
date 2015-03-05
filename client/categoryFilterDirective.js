@@ -16,6 +16,7 @@ require('./akermap')
         return {
             restrict: 'E',
             require: '^main',
+            scope: true,
             templateUrl: require('./templates/categoryFilterDirective.html'),
             link: function(scope) {
                 scope.categories = categoryArray;

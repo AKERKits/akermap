@@ -1,0 +1,21 @@
+<form name="resourceForm" ng-submit="submitForm()">
+
+  <ul>
+    <li>
+      <label for="resource_name" translate>ADD_RESOURCE_NAME_QUESTION</label>
+      <span class="hint" translate>ADD_RESOURCE_NAME_HELP_TEXT</span>
+      <input id="resource_name" type="text" name="resource_name" ng-model="resource.name" required ng-trim="true">
+      <span class="error" ng-show="resourceForm.resource_name.$error.required">{{ 'FORM_REQUIRED' | translate }}</span>
+    </li>
+
+    <li>
+      <label for="resource_sustainability" translate>ADD_RESOURCE_SUSTAINABILITY_QUESTION</label>
+      <span class="hint" translate>ADD_RESOURCE_SUSTAINABILITY_HELP_TEXT</span>
+      <span ng-repeat="i in [1,2,3,4,5]"><input name="resource_sustainability" type="radio" ng-model="resource.sustainability" ng-value="{{i}}" ng-required="!resource.sustainability">{{i}}</span>
+      <span class="error" ng-show="resourceForm.resource_sustainability.$error.required">{{ 'FORM_REQUIRED' | translate }}</span>
+    </li>
+
+  </ul>
+  <button type="reset" translate>FORM_RESET</button>
+  <button type="submit" translate>FORM_SUBMIT</button>
+</form>

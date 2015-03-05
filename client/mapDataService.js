@@ -43,11 +43,17 @@ require('./akermap')
           }
           var self = this;
           current = $q.defer();
+          var selectedCategories = self.getCategoryFilter();
+          if (selectedCategories !== null && selectedCategories.length === 0) {
+              // no categories selected, so result is empty
+              current.resolve([]);
+              return current.promise;
+          }
+
           loadInitial()
             .then(angular.copy)
             .then(function applyCategoryFilter(list) {
-                var selectedCategories = self.getCategoryFilter();
-                if (selectedCategories !== null && selectedCategories.length > 0) {
+                if (selectedCategories !== null) {
                   return list.filter(function(item) {
                       // if we have at least one matching category, it is part of the result
                       var intersectingCategories = _.intersection(item.categories, selectedCategories);

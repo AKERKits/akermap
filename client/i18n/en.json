@@ -7,5 +7,12 @@
 	"CATEGORY_SOIL": "Soil & Compost",
 	"CATEGORY_WORMS": "Worms",
 	"CATEGORY_OTHER": "Other: General Agricultural Supplies",
-	"The AKER map": "The AKER map"
+	"The AKER map": "The AKER map",
+	"ADD_RESOURCE_NAME_QUESTION": "Resource name",
+	"ADD_RESOURCE_NAME_HELP_TEXT": "What is the name of the resource?",
+	"ADD_RESOURCE_SUSTAINABILITY_QUESTION": "How Sustainable & Ethical is this Resource?",
+	"ADD_RESOURCE_SUSTAINABILITY_HELP_TEXT": "Rate from 1 (Worst) and 5 (Best)",
+	"FORM_REQUIRED": "Required",
+	"FORM_RESET": "Reset",
+	"FORM_SUBMIT": "Submit"
 }

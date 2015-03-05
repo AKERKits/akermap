@@ -1,4 +1,4 @@
-<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds" refresh="map.refresh" options="mapOptions" draggable="true">
+<ui-gmap-google-map events="map.events" center='map.center' zoom='map.zoom' bounds="map.bounds" refresh="map.refresh" options="mapOptions" draggable="true">
 
   <ui-gmap-markers
   models='markers'
@@ -7,5 +7,8 @@
   icon="'icon'"
   >
   </ui-gmap-markers>
+
+  <ui-gmap-marker coords="map.clickedMarker"  idKey="map.clickedMarker.id" options="map.clickedMarker.options" click="clickedMarkerClick()">
+  </ui-gmap-marker>
 
 </ui-gmap-google-map>
