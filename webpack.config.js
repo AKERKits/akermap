@@ -25,17 +25,16 @@ module.exports = (function() {
 		},
 		module: {
 			noParse: [
-				/angular-translate\/angular-translate\.js/,
+				/angular-translate(\/|\\)angular-translate\.js/,
 			],
 			loaders: [
-				// required to write "require('./style.css')"
 				{ test: /\.css$/, loader: "style-loader!css-loader" },
-				{ test: /map\/styles\/.*\.json$/, loader: "json" }, // loader for map styles
-				{ test: /data\/.*\.json$/, loader: "json" },
+				{ test: /map(\/|\\)styles(\/|\\).*\.json$/, loader: "json" }, // loader for map styles
+				{ test: /data(\/|\\).*\.json$/, loader: "json" },
 				{ test: /modernizr\.js$/, loader: 'imports?this=>window' },
 				{ test: /respond\.src\.js$/, loader: 'imports?this=>window' },
 				{ test: /ng-table\.js/, loader: 'imports?define=>null'},
-				{ test: /templates\/.*\.html$/, loader: "ngtemplate?relativeTo="+clientDir+"!html" },
+				{ test: /templates(\/|\\).*\.html$/, loader: "ngtemplate?relativeTo="+clientDir+"!html" },
 				{ test: /\.less$/, loader: "style-loader!css-loader!less-loader" }
 			]
 		},
