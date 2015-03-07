@@ -7,7 +7,7 @@ module.exports = (function() {
 	var AngularWebpackPlugin = require('angular-webpack-plugin');
 	var NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
-	var clientDir = path.resolve(__dirname, './client');
+	var clientDir = path.resolve(__dirname, path.join(__dirname, 'client'));
 
 	return {
 		cache: true,
