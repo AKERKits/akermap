@@ -6,8 +6,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/grunt-cli/bin/grunt",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "dev": "./node_modules/grunt-cli/bin/grunt"
   },
   "author": "Joscha Feth <joscha@feth.com>",
   "license": "MIT",

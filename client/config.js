@@ -7,9 +7,9 @@
         .constant('isDebug', isDebug)
         .config(function(uiGmapGoogleMapApiProvider) {
             uiGmapGoogleMapApiProvider.configure({
-                v: '3.18'
+                v: '3.18',
                 //    key: 'your api key',
-                //libraries: 'weather,geometry,visualization,places'
+                libraries: 'weather,geometry,visualization,places'
             });
         })
         .config(function ($translateProvider) {
