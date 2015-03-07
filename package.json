@@ -5,8 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/grunt-cli/bin/grunt"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joscha Feth <joscha@feth.com>",
   "license": "MIT",
