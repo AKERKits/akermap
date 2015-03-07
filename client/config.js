@@ -9,7 +9,7 @@
             uiGmapGoogleMapApiProvider.configure({
                 v: '3.18',
                 //    key: 'your api key',
-                libraries: 'weather,geometry,visualization,places'
+                //libraries: 'weather,geometry,visualization,places'
             });
         })
         .config(function ($translateProvider) {
