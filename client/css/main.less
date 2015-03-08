@@ -67,3 +67,25 @@ aker-map {
   color: white;
   border: 1px solid black;
 }
+
+@categories: bees, beekeeping_equipment, soil, worms, chickens, other, plants, seeds;
+
+.create-category-classes(@iterator:1) when(@iterator <= length(@categories)) {
+    @name: extract(@categories, @iterator);
+    .category-@{name} {
+      width: 32px;
+      height: 32px;
+      background-size: contain;
+      background-image: data-uri('../images/icons/@{name}.svg');
+    }
+    .create-category-classes((@iterator + 1));
+}
+.create-category-classes();
+
+.resource-info-window {
+  .categories {
+    div {
+      float: left;
+    }
+  }
+}

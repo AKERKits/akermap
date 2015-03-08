@@ -1,6 +1,9 @@
 {
   "bees": {
     "icon": {
+      "url": "images/icons/bees.svg"
+    },
+    "pin": {
       "size": {
         "w": 100,
         "h": 100
@@ -14,113 +17,14 @@
         "y": 36
 
       },
-      "url": "images/icons/bees.svg"
+      "url": "images/pins/bees.svg"
     }
   },
   "beekeeping_equipment": {
     "icon": {
-			"size": {
-        "w": 100,
-        "h": 100
-      },
-      "scaled": {
-        "w": 36,
-        "h": 36
-      },
-      "anchor": {
-        "x": 18,
-        "y": 36
-      },
       "url": "images/icons/beekeeping_equipment.svg"
-    }
-  },
-  "chickens": {
-    "icon": {
-			"size": {
-        "w": 100,
-        "h": 100
-      },
-      "scaled": {
-        "w": 36,
-        "h": 36
-      },
-      "anchor": {
-        "x": 18,
-        "y": 36
-      },
-      "url": "images/icons/chickens.svg"
-    }
-  },
-  "plants": {
-    "icon": {
-			"size": {
-        "w": 100,
-        "h": 100
-      },
-      "scaled": {
-        "w": 36,
-        "h": 36
-      },
-      "anchor": {
-        "x": 18,
-        "y": 36
-      },
-      "url": "images/icons/plants.svg"
-    }
-  },
-  "seeds": {
-    "icon": {
-			"size": {
-        "w": 100,
-        "h": 100
-      },
-      "scaled": {
-        "w": 36,
-        "h": 36
-      },
-      "anchor": {
-        "x": 18,
-        "y": 36
-      },
-      "url": "images/icons/seeds.svg"
-    }
-  },
-  "soil": {
-		"icon": {
-			"size": {
-        "w": 100,
-        "h": 100
-      },
-      "scaled": {
-        "w": 36,
-        "h": 36
-      },
-      "anchor": {
-        "x": 18,
-        "y": 36
-      },
-      "url": "images/icons/soil.svg"
-    }
-  },
-  "worms": {
-    "icon": {
-			"size": {
-        "w": 100,
-        "h": 100
-      },
-      "scaled": {
-        "w": 36,
-        "h": 36
-      },
-      "anchor": {
-        "x": 18,
-        "y": 36
-      },
-      "url": "images/icons/worms.svg"
-    }
-  },
-  "other": {
-    "icon": {
+    },
+    "pin": {
       "size": {
         "w": 100,
         "h": 100
@@ -133,7 +37,127 @@
         "x": 18,
         "y": 36
       },
+      "url": "images/pins/beekeeping_equipment.svg"
+    }
+  },
+  "chickens": {
+    "icon": {
+      "url": "images/icons/chickens.svg"
+    },
+    "pin": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/pins/chickens.svg"
+    }
+  },
+  "plants": {
+    "icon": {
+      "url": "images/icons/plants.svg"
+    },
+    "pin": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/pins/plants.svg"
+    }
+  },
+  "seeds": {
+    "icon": {
+      "url": "images/icons/seeds.svg"
+    },
+    "pin": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/pins/seeds.svg"
+    }
+  },
+  "soil": {
+    "icon": {
+      "url": "images/icons/soil.svg"
+    },
+    "pin": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/pins/soil.svg"
+    }
+  },
+  "worms": {
+    "icon": {
+      "url": "images/icons/worms.svg"
+    },
+    "pin": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/pins/worms.svg"
+    }
+  },
+  "other": {
+    "icon": {
       "url": "images/icons/other.svg"
+    },
+    "pin": {
+      "size": {
+        "w": 100,
+        "h": 100
+      },
+      "scaled": {
+        "w": 36,
+        "h": 36
+      },
+      "anchor": {
+        "x": 18,
+        "y": 36
+      },
+      "url": "images/pins/other.svg"
     }
   }
 }

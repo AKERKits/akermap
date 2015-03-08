@@ -1,1 +1,12 @@
-<div>{{parameter.categories}}</div>
+<div class="resource-info-window">
+  <table>
+    <tr>
+      <td translate>INFO_WINDOW_CATEGORIES</td>
+      <td>
+        <div class="categories">
+          <div title="{{ 'CATEGORY_' + category.toUpperCase() | translate }}" ng-repeat="category in parameter.categories" class="category-{{category}}"></div>
+        </div>
+      </td>
+    </tr>
+  <table>
+</div>

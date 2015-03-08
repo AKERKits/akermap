@@ -78,7 +78,7 @@ require('./akermap')
                             category = item.categories[0];
                         }
 
-                        var iconData = categories[category].icon;
+                        var iconData = categories[category].pin;
                         item.icon = {
                             url: iconData.url,
                             size: new maps.Size(iconData.size.w, iconData.size.h),
