@@ -1,6 +1,7 @@
 (function() {
     'use strict';
     var isDebug = true;
+    var languages = ['en', 'de'];
 
     require('./akermap')
         .constant('firebaseLocation', 'https://akermap.firebaseio.com')
@@ -13,11 +14,18 @@
             });
         })
         .config(function ($translateProvider) {
+            /*
             $translateProvider.useStaticFilesLoader({
                 prefix: 'i18n/',
                 suffix: '.json'
             });
-            $translateProvider.preferredLanguage('en');
+            */
+            // let's try loading the language files via webpack directly and see how that goes
+            // if it doesn't work well we can switch back to the static files loader
+            languages.forEach(function(language) {
+                $translateProvider.translations(language, require('./i18n/' + language + '.json'));
+            });
+            $translateProvider.preferredLanguage(languages[0]);
         })
         .config(function($logProvider) {
             $logProvider.debugEnabled(isDebug);
