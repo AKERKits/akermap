@@ -1,10 +1,22 @@
 <div class="resource-info-window">
   <table>
     <tr>
-      <td translate>INFO_WINDOW_CATEGORIES</td>
+      <th translate>INFO_WINDOW_RESOURCE_TYPES</th>
       <td>
+        <table>
+          <tr>
+            <td ng-repeat="category in parameter.categories">
+              <div class="category-{{category}}"></div>
+            </td>
+          </tr>
+          <tr>
+            <th ng-repeat="category in parameter.categories" translate>
+              {{'CATEGORY_' + category.toUpperCase()}}
+            </th>
+          </tr>
+        </table>
         <div class="categories">
-          <div title="{{ 'CATEGORY_' + category.toUpperCase() | translate }}" ng-repeat="category in parameter.categories" class="category-{{category}}"></div>
+          <div title="{{ 'CATEGORY_' + category.toUpperCase() | translate }}"  class="category-{{category}}"></div>
         </div>
       </td>
     </tr>
