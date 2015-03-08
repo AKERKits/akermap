@@ -35,18 +35,24 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                 events: {
                     click: function (mapModel, eventName, originalEventArgs) {
                         // 'this' is the directive's scope
+
+                        function show() {
+                            var e = originalEventArgs[0];
+                            angular.extend($scope.map.addResourceMarker, {
+                                latitude: e.latLng.lat(),
+                                longitude: e.latLng.lng()
+                            });
+
+                            //scope apply required because this event handler is outside of the angular domain
+                            $scope.$apply();
+                        }
+
                         if ($scope.map.addResourceMarker.latitude && $scope.map.addResourceMarker.longitude) {
                             hideAddResourceMarker();
                             $scope.$apply();
                         }
-                        var e = originalEventArgs[0];
-                        angular.extend($scope.map.addResourceMarker, {
-                            latitude: e.latLng.lat(),
-                            longitude: e.latLng.lng()
-                        });
+                        show();
 
-                        //scope apply required because this event handler is outside of the angular domain
-                        $scope.$apply();
                     }
                 }
             };
