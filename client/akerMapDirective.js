@@ -155,7 +155,7 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                 });
 
                 $scope.map.addResourceMarker.icon = {
-                        url: 'images/icons/add.svg',
+                        url: 'images/pins/add.svg',
                         size: new maps.Size(100, 100),
                         scaledSize: new maps.Size(36, 36),
                         anchor: new maps.Point(18, 36)
