@@ -58,7 +58,7 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                 events: {
                     click: function (mapModel, eventName, originalEventArgs) {
                         // 'this' is the directive's scope
-
+                        hideMarkerInfoWindow();
                         function show() {
                             var e = originalEventArgs[0];
                             angular.extend($scope.map.addResourceMarker, {
@@ -82,12 +82,18 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
             $scope.mapOptions = {};
             $scope.markers = [];
 
+            function hideMarkerInfoWindow() {
+                $scope.markerInfoWindow.show = false;
+            }
+
             $scope.markerEvents = {
                 click: function (_, eventName, marker) {
                     //$log.debug(marker);
 
                     // make sure the template content is updated by destroying the window first
-                    $scope.markerInfoWindow.show = false;
+                    hideMarkerInfoWindow();
+
+                    hideAddResourceMarker(); // if the add resource marker was open, hide that as well
                     $scope.$apply();
 
                     // new coordinates and contents
@@ -112,7 +118,7 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                 templateParameter: {},
                 closeClick: function() {
                     $log.debug('close window');
-                    $scope.markerInfoWindow.show = false;
+                    hideMarkerInfoWindow();
 
                     //scope apply required because this event handler is outside of the angular domain
                     $scope.$apply();
