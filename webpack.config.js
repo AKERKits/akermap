@@ -31,7 +31,7 @@ module.exports = (function() {
 				{ test: /\.css$/, loader: "style-loader!css-loader" },
 				{ test: /map(\/|\\)styles(\/|\\).*\.json$/, loader: "json" }, // loader for map styles
 				{ test: /data(\/|\\).*\.json$/, loader: "json" },
-				{ test: /images(\/|\\).*\.svg$/, loader: "raw" },
+				{ test: /images(\/|\\).*\.svg$/, loader: "url-loader" },
 				{ test: /modernizr\.js$/, loader: 'imports?this=>window' },
 				{ test: /respond\.src\.js$/, loader: 'imports?this=>window' },
 				{ test: /ng-table\.js/, loader: 'imports?define=>null'},

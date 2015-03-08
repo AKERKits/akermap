@@ -76,7 +76,8 @@ aker-map {
       width: 32px;
       height: 32px;
       background-size: contain;
-      background-image: data-uri('../images/icons/@{name}.svg');
+      //background-image: data-uri('image/svg+xml;charset=UTF-8', '../images/icons/@{name}.svg');
+      background-image: url('../images/icons/@{name}.svg');
     }
     .create-category-classes((@iterator + 1));
 }
