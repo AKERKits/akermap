@@ -2,7 +2,7 @@ require('./geoLocationService');
 require('./mapDataService');
 var styles = require('./map/styles/avocado.json');
 
-require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, $translate) {
+require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q) {
     'use strict';
 
     return {
@@ -13,6 +13,32 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
 
             function hideAddResourceMarker() {
                 $scope.map.addResourceMarker.latitude = $scope.map.addResourceMarker.longitude = null;
+            }
+
+            $scope.addResourceMarkerInfoWindowCloseClick = function() {
+                hideAddResourceMarker();
+                $scope.$apply();
+            };
+
+            function locate() {
+                return geoLocationService().then(
+                    function success(geoLocatedCoords) {
+                        return {
+                          center: geoLocatedCoords,
+                          zoom: 12
+                        };
+                    },
+                    function useFallback() {
+                        return {
+                          center: {
+                              // Denver
+                            latitude: 39.7643389,
+                            longitude: -104.8551114
+                          },
+                          zoom: 9
+                        };
+                    }
+                );
             }
 
             $scope.addResourceMarkerClick = function() {
@@ -26,10 +52,7 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                 addResourceMarker: {
                     id: 0,
                     options: {
-                        draggable: true,
-                        labelContent: $translate.instant('ADD_RESOURCE_MARKER_LABEL'),
-                        labelClass: "add-resource-label",
-                        labelAnchor:"70 0"
+                        draggable: true
                     }
                 },
                 events: {
@@ -59,6 +82,43 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
             $scope.mapOptions = {};
             $scope.markers = [];
 
+            $scope.markerEvents = {
+                click: function (_, eventName, marker) {
+                    //$log.debug(marker);
+
+                    // make sure the template content is updated by destroying the window first
+                    $scope.markerInfoWindow.show = false;
+                    $scope.$apply();
+
+                    // new coordinates and contents
+                    $scope.markerInfoWindow.coords.longitude = marker.longitude;
+                    $scope.markerInfoWindow.coords.latitude = marker.latitude;
+                    $scope.markerInfoWindow.templateParameter = marker;
+                    $scope.markerInfoWindow.show = true;
+
+                    //scope apply required because this event handler is outside of the angular domain
+                    $scope.$apply();
+                }
+            };
+
+            $scope.markerInfoWindow = {
+                coords: {
+                    longitude: null,
+                    latitude: null
+                },
+                show: false,
+                templateUrl: require('./templates/markerInfoWindow.html'),
+                options: {},
+                templateParameter: {},
+                closeClick: function() {
+                    $log.debug('close window');
+                    $scope.markerInfoWindow.show = false;
+
+                    //scope apply required because this event handler is outside of the angular domain
+                    $scope.$apply();
+                }
+            };
+
             function updateMarkers() {
                 return mapData.get().then(function(list) {
                     $scope.markers = list;
@@ -74,26 +134,6 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
 
             // test data
             // $scope.markers = require('./data/bogus.json');
-            function locate() {
-                return geoLocationService().then(
-                    function success(geoLocatedCoords) {
-                        return {
-                          center: geoLocatedCoords,
-                          zoom: 12
-                        };
-                    },
-                    function useFallback() {
-                        return {
-                          center: {
-                              // Denver
-                            latitude: 39.7643389,
-                            longitude: -104.8551114
-                          },
-                          zoom: 9
-                        };
-                    }
-                );
-            }
 
             $q.all({
                 map: locate(),
@@ -121,6 +161,8 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                         anchor: new maps.Point(18, 36)
                 };
                 $scope.map.addResourceMarker.options.animation = maps.Animation.DROP;
+
+                $scope.markerInfoWindow.options.pixelOffset = new maps.Size(0, -36);
 
                 angular.extend($scope.map, map);
             });

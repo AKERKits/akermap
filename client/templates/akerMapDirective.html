@@ -1,10 +1,11 @@
 <ui-gmap-google-map events="map.events" center='map.center' zoom='map.zoom' bounds="map.bounds" refresh="map.refresh" options="mapOptions" draggable="true">
 
   <ui-gmap-markers
-  models='markers'
-  doCluster="true"
-  coords="'self'"
-  icon="'icon'"
+    models='markers'
+    events="markerEvents"
+    doCluster="true"
+    coords="'self'"
+    icon="'icon'"
   >
   </ui-gmap-markers>
 
@@ -15,7 +16,22 @@
     coords="map.addResourceMarker"
     idKey="map.addResourceMarker.id"
     options="map.addResourceMarker.options"
-    click="addResourceMarkerClick()">
+    click="addResourceMarkerClick()"
+  >
+    <ui-gmap-window show="true" closeClick="addResourceMarkerInfoWindowCloseClick()" options="{pixelOffset: {width: -36, height: 0, x: -36}}">
+        <span translate>ADD_RESOURCE_MARKER_LABEL</span>
+    </ui-gmap-window>
   </ui-gmap-marker>
+
+  <ui-gmap-window
+    ng-if="markerInfoWindow.show"
+    coords='markerInfoWindow.coords'
+    show='markerInfoWindow.show'
+    templateUrl='markerInfoWindow.templateUrl'
+    templateParameter="markerInfoWindow.templateParameter"
+    closeClick='markerInfoWindow.closeClick()'
+    options='markerInfoWindow.options'
+    >
+</ui-gmap-window>
 
 </ui-gmap-google-map>
