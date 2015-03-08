@@ -14,5 +14,7 @@
 	"ADD_RESOURCE_SUSTAINABILITY_HELP_TEXT": "Rate from 1 (Worst) and 5 (Best)",
 	"FORM_REQUIRED": "Required",
 	"FORM_RESET": "Reset",
-	"FORM_SUBMIT": "Submit"
+	"FORM_SUBMIT": "Submit",
+
+	"ADD_RESOURCE_MARKER_LABEL": "Click to add a resource here"
 }

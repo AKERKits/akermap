@@ -8,7 +8,13 @@
   >
   </ui-gmap-markers>
 
-  <ui-gmap-marker coords="map.clickedMarker"  idKey="map.clickedMarker.id" options="map.clickedMarker.options" click="clickedMarkerClick()">
+  <ui-gmap-marker
+    ng-if="map.addResourceMarker.latitude"
+    icon="map.addResourceMarker.icon"
+    coords="map.addResourceMarker"
+    idKey="map.addResourceMarker.id"
+    options="map.addResourceMarker.options"
+    click="addResourceMarkerClick()">
   </ui-gmap-marker>
 
 </ui-gmap-google-map>

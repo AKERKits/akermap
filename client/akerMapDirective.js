@@ -2,7 +2,7 @@ require('./geoLocationService');
 require('./mapDataService');
 var styles = require('./map/styles/avocado.json');
 
-require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q) {
+require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, $translate) {
     'use strict';
 
     return {
@@ -11,40 +11,43 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
         templateUrl: require('./templates/akerMapDirective.html'),
         link: function($scope, element, attrs, mainCtrl) {
 
-            $scope.clickedMarkerClick = function() {
-                $scope.map.clickedMarker.latitude = $scope.map.clickedMarker.longitude = null;
+            function hideAddResourceMarker() {
+                $scope.map.addResourceMarker.latitude = $scope.map.addResourceMarker.longitude = null;
+            }
+
+            $scope.addResourceMarkerClick = function() {
+                hideAddResourceMarker();
                 mainCtrl.toggleShowAddResourceForm(true);
             };
 
             $scope.map = {
                 refresh: false,
                 bounds: {},
-                clickedMarker: {
+                addResourceMarker: {
                     id: 0,
-                    options:{
+                    options: {
+                        draggable: true,
+                        labelContent: $translate.instant('ADD_RESOURCE_MARKER_LABEL'),
+                        labelClass: "add-resource-label",
+                        labelAnchor:"70 0"
                     }
                 },
                 events: {
                     click: function (mapModel, eventName, originalEventArgs) {
-                              // 'this' is the directive's scope
-                              $log.info("user defined event: " + eventName, mapModel, originalEventArgs);
+                        // 'this' is the directive's scope
+                        if ($scope.map.addResourceMarker.latitude && $scope.map.addResourceMarker.longitude) {
+                            hideAddResourceMarker();
+                            $scope.$apply();
+                        }
+                        var e = originalEventArgs[0];
+                        angular.extend($scope.map.addResourceMarker, {
+                            latitude: e.latLng.lat(),
+                            longitude: e.latLng.lng()
+                        });
 
-                              var e = originalEventArgs[0];
-                              var lat = e.latLng.lat(),
-                                lon = e.latLng.lng();
-                              $scope.map.clickedMarker = {
-                                id: 0,
-                                options: {
-                                  labelContent: 'Click to add your resource here: ' + 'lat: ' + lat + ' lon: ' + lon,
-                                  //labelClass: "marker-labels",
-                                  labelAnchor:"50 0"
-                                },
-                                latitude: lat,
-                                longitude: lon
-                              };
-                              //scope apply required because this event handler is outside of the angular domain
-                              $scope.$apply();
-                            }
+                        //scope apply required because this event handler is outside of the angular domain
+                        $scope.$apply();
+                    }
                 }
             };
             $scope.mapOptions = {};
@@ -104,6 +107,14 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                     },
                     streetViewControl: false
                 });
+
+                $scope.map.addResourceMarker.icon = {
+                        url: 'images/icons/add.svg',
+                        size: new maps.Size(100, 100),
+                        scaledSize: new maps.Size(36, 36),
+                        anchor: new maps.Point(18, 36)
+                };
+                $scope.map.addResourceMarker.options.animation = maps.Animation.DROP;
 
                 angular.extend($scope.map, map);
             });
