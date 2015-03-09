@@ -1,7 +1,7 @@
 @import "~elements/elements.less";
 @import "~angular-modal/modal.css";
 
-@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
 
 * {
   font-family: 'Raleway', sans-serif;
@@ -153,9 +153,29 @@ aker-map {
 .create-category-classes();
 
 .resource-info-window {
-  .categories {
-    div {
-      float: left;
+
+  .resource-main-table {
+    th, td {
+      padding: 0.2em;
+    }
+    th {
+      font-weight: 700;
+      text-align: left;
+    }
+    .resource-category-table {
+      th {
+        font-weight: normal;
+        text-align: center;
+      }
+      th, td {
+        padding: 0;
+      }
+      th + th, td + td {
+        //border-left: 1px dotted black;
+        padding-left: 0.5em;
+      }
     }
   }
+
+
 }

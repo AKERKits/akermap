@@ -2,6 +2,8 @@ require('./geoLocationService');
 require('./mapDataService');
 require('./formModal');
 var styles = require('./map/styles/avocado.json');
+var categories = require('./data/categories.json');
+var _ = require('lodash');
 
 require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $sanitize) {
     'use strict';
@@ -92,7 +94,7 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
             }
 
             $scope.markerEvents = {
-                click: function (_, eventName, marker) {
+                click: function (model, eventName, marker) {
                     //$log.debug(marker);
 
                     // make sure the template content is updated by destroying the window first
@@ -104,7 +106,19 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
                     // new coordinates and contents
                     $scope.markerInfoWindow.coords.longitude = marker.longitude;
                     $scope.markerInfoWindow.coords.latitude = marker.latitude;
-                    $scope.markerInfoWindow.templateParameter = marker;
+                    $scope.markerInfoWindow.templateParameter = {
+                        name: marker.name,
+                        categories: _.filter(marker.categories, function(item) {
+                            return _.has(categories, item);
+                        }),
+                        sustainability: +marker.sustainability,
+                        address: marker.address,
+                        phone: marker.phone,
+                        email: $sanitize(marker.email),
+                        url: $sanitize(marker.url),
+                        description: marker.description,
+                        contributor: marker.contributor
+                    };
                     $scope.markerInfoWindow.show = true;
 
                     //scope apply required because this event handler is outside of the angular domain
