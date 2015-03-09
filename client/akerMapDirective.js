@@ -152,6 +152,7 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
 
             $scope.$on('updateFilters', function() {
                 $log.debug('updating markers and refreshing map');
+                hideMarkerInfoWindow();
                 updateMarkers().then(function() {
                     $scope.map.refresh = true;
                 });
