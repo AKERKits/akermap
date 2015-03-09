@@ -34,6 +34,40 @@ aker-map {
   .add-resource-form-inner {
     height: 100%;
     overflow: auto;
+    padding: 0.5em;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+
+        padding-bottom: 0.5em;
+
+        label {
+          font-size: smaller;
+        }
+
+        & > label {
+          display: block
+        }
+
+        .hint {
+          font-size: x-small;
+          color: grey;
+          display: block;
+        }
+
+        [required] {
+          border: 1px solid red;
+        }
+
+        .error {
+          color: red;
+          font-size: smaller;
+        }
+      }
+    }
   }
 }
 
