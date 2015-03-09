@@ -8,6 +8,9 @@
 	"CATEGORY_WORMS": "Worms",
 	"CATEGORY_OTHER": "Other: General Agricultural Supplies",
 	"The AKER map": "The AKER map",
+
+	"ADD_RESOURCE_LOCAL_REGULATIONS_NOTE": "Please refer to local regulations before inputing resources - AKER is not responsible for users not observing their local regulations.",
+	"ADD_RESOURCE_LOCAL_REGULATIONS_ACCEPT": "I understand and accept",
 	"ADD_RESOURCE_NAME_QUESTION": "Resource name",
 	"ADD_RESOURCE_NAME_HELP_TEXT": "What is the name of the resource?",
 	"ADD_RESOURCE_SUSTAINABILITY_QUESTION": "How Sustainable & Ethical is this Resource?",

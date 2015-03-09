@@ -69,6 +69,12 @@
           <span class="error" ng-show="resourceForm.resource_contributor.$error.required" translate>FORM_REQUIRED</span>
         </li>
 
+        <li class="accept-local-regulations">
+          <div translate>ADD_RESOURCE_LOCAL_REGULATIONS_NOTE</div>
+          <input id="local_regulations" type="checkbox" name="local_regulations" ng-model="resource.accepted" required>
+          <label for="local_regulations" translate>ADD_RESOURCE_LOCAL_REGULATIONS_ACCEPT</label>
+          <span class="error" ng-show="resourceForm.local_regulations.$error.required" translate>FORM_REQUIRED</span>
+        </li>
       </ul>
       <button type="reset" ng-click="resetForm()" translate>FORM_RESET</button>
       <button type="submit" translate>FORM_SUBMIT</button>
