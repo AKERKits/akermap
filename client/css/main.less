@@ -23,7 +23,6 @@ aker-map {
 
 .add-resource-form {
   background-color: white;
-  margin: 0.5em;
   padding: 0.5em;
   .drop-shadow(0, 1px, 2px, 0.2);
   .rounded(5px);
@@ -31,40 +30,63 @@ aker-map {
   z-index: 4;
   height: 90%;
 
+  .add-resource-form-close {
+    position: absolute;
+    right: -10px;
+    padding: 0.5em;
+    top: -10px;
+    background-color: black;
+    color: white;
+    .rounded(15px);
+    text-decoration: none;
+    font-weight: bold;
+    width: 10px;
+    height: 10px;
+
+    span {
+      position: relative;
+      top: -4px;
+    }
+  }
+
   .add-resource-form-inner {
     height: 100%;
     overflow: auto;
-    padding: 0.5em;
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+    form {
+      padding: 0.1em;
 
-      li {
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
 
-        padding-bottom: 0.5em;
+        li {
 
-        label {
-          font-size: smaller;
-        }
+          padding-bottom: 0.5em;
 
-        & > label {
-          display: block
-        }
+          label {
+            font-size: smaller;
+          }
 
-        .hint {
-          font-size: x-small;
-          color: grey;
-          display: block;
-        }
+          & > label {
+            display: block
+          }
 
-        [required] {
-          border: 1px solid red;
-        }
+          .hint {
+            font-size: x-small;
+            color: grey;
+            display: block;
+          }
 
-        .error {
-          color: red;
-          font-size: smaller;
+          [required] {
+            border: 1px solid red;
+          }
+
+          .error {
+            color: red;
+            font-size: smaller;
+          }
         }
       }
     }

@@ -1,78 +1,77 @@
 <div  class="add-resource-form btf-modal">
-  <a href="" ng-click="closeClick()">X</a>
+  <a href="" class="add-resource-form-close" ng-click="closeClick()"><span>X</span></a>
   <div class="add-resource-form-inner">
-<form name="resourceForm" ng-submit="submitForm()">
+    <form name="resourceForm" ng-submit="submitForm()">
+      <ul>
+        <li>
+          <label for="resource_name" translate>ADD_RESOURCE_NAME_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_NAME_HELP_TEXT</span>
+          <input id="resource_name" type="text" name="resource_name" ng-model="resource.name" required ng-trim="true">
+          <span class="error" ng-show="resourceForm.resource_name.$error.required" translate>FORM_REQUIRED</span>
+        </li>
 
-  <ul>
-    <li>
-      <label for="resource_name" translate>ADD_RESOURCE_NAME_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_NAME_HELP_TEXT</span>
-      <input id="resource_name" type="text" name="resource_name" ng-model="resource.name" required ng-trim="true">
-      <span class="error" ng-show="resourceForm.resource_name.$error.required" translate>FORM_REQUIRED</span>
-    </li>
+        <li>
+          <label for="resource_sustainability" translate>ADD_RESOURCE_SUSTAINABILITY_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_SUSTAINABILITY_HELP_TEXT</span>
+          <span ng-repeat="i in [1,2,3,4,5]"><input name="resource_sustainability" type="radio" ng-model="resource.sustainability" ng-value="{{i}}" ng-required="!resource.sustainability"> {{i}} </span>
+          <span class="error" ng-show="resourceForm.resource_sustainability.$error.required" translate>FORM_REQUIRED</span>
+        </li>
 
-    <li>
-      <label for="resource_sustainability" translate>ADD_RESOURCE_SUSTAINABILITY_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_SUSTAINABILITY_HELP_TEXT</span>
-      <span ng-repeat="i in [1,2,3,4,5]"><input name="resource_sustainability" type="radio" ng-model="resource.sustainability" ng-value="{{i}}" ng-required="!resource.sustainability"> {{i}} </span>
-      <span class="error" ng-show="resourceForm.resource_sustainability.$error.required" translate>FORM_REQUIRED</span>
-    </li>
-
-    <li>
-      <label for="resource_categories" translate>ADD_RESOURCE_TYPE_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_TYPE_HELP_TEXT</span>
-      <div ng-repeat="(category, value) in categories" class="resource-categories-list">
-        <input type="checkbox" id="resource_categories_{{category}}" name="resource_categories" ng-model="resource.categories[$index]" ng-true-value="'{{category}}'" ng-required="!isAtLeastOneTypeSelected(resource.categories)">
-        <label for="resource_categories_{{category}}" translate>{{'CATEGORY_' + category.toUpperCase() }}</label>
-      </div>
-      <span class="error" ng-show="resourceForm.resource_categories.$error.required" translate>FORM_REQUIRED_AT_LEAST_ONE</span>
-    </li>
+        <li>
+          <label for="resource_categories" translate>ADD_RESOURCE_TYPE_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_TYPE_HELP_TEXT</span>
+          <div ng-repeat="(category, value) in categories" class="resource-categories-list">
+            <input type="checkbox" id="resource_categories_{{category}}" name="resource_categories" ng-model="resource.categories[$index]" ng-true-value="'{{category}}'" ng-required="!isAtLeastOneTypeSelected(resource.categories)">
+            <label for="resource_categories_{{category}}" translate>{{'CATEGORY_' + category.toUpperCase() }}</label>
+          </div>
+          <span class="error" ng-show="resourceForm.resource_categories.$error.required" translate>FORM_REQUIRED_AT_LEAST_ONE</span>
+        </li>
 
 
-    <li>
-      <label for="resource_address" translate>ADD_RESOURCE_RESOURCE_ADDRESS_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_RESOURCE_ADDRESS_HELP_TEXT</span>
-      <input id="resource_address" type="text" name="resource_address" ng-model="resource.address" required ng-trim="true">
-      <span class="error" ng-show="resourceForm.resource_address.$error.required" translate>FORM_REQUIRED</span>
-    </li>
+        <li>
+          <label for="resource_address" translate>ADD_RESOURCE_RESOURCE_ADDRESS_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_RESOURCE_ADDRESS_HELP_TEXT</span>
+          <input id="resource_address" type="text" name="resource_address" ng-model="resource.address" required ng-trim="true">
+          <span class="error" ng-show="resourceForm.resource_address.$error.required" translate>FORM_REQUIRED</span>
+        </li>
 
-    <li>
-      <label for="resource_phone" translate>ADD_RESOURCE_RESOURCE_PHONE_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_RESOURCE_PHONE_HELP_TEXT</span>
-      <input id="resource_phone" type="text" name="resource_phone" ng-model="resource.phone" ng-trim="true">
-    </li>
+        <li>
+          <label for="resource_phone" translate>ADD_RESOURCE_RESOURCE_PHONE_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_RESOURCE_PHONE_HELP_TEXT</span>
+          <input id="resource_phone" type="text" name="resource_phone" ng-model="resource.phone" ng-trim="true">
+        </li>
 
-    <li>
-      <label for="resource_email" translate>ADD_RESOURCE_RESOURCE_EMAIL_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_RESOURCE_EMAIL_HELP_TEXT</span>
-      <input id="resource_email" type="email" name="resource_email" ng-model="resource.email" ng-trim="true">
-      <span class="error" ng-show="resourceForm.resource_email.$error.email" translate>FORM_NO_VALID_EMAIL</span>
-    </li>
+        <li>
+          <label for="resource_email" translate>ADD_RESOURCE_RESOURCE_EMAIL_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_RESOURCE_EMAIL_HELP_TEXT</span>
+          <input id="resource_email" type="email" name="resource_email" ng-model="resource.email" ng-trim="true">
+          <span class="error" ng-show="resourceForm.resource_email.$error.email" translate>FORM_NO_VALID_EMAIL</span>
+        </li>
 
-    <li>
-      <label for="resource_url" translate>ADD_RESOURCE_RESOURCE_WEBSITE_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_RESOURCE_WEBSITE_HELP_TEXT</span>
-      <input id="resource_url" type="url" name="resource_url" ng-model="resource.url" ng-trim="true">
-      <span class="error" ng-show="resourceForm.resource_url.$error.url" translate>FORM_NO_VALID_URL</span>
-    </li>
+        <li>
+          <label for="resource_url" translate>ADD_RESOURCE_RESOURCE_WEBSITE_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_RESOURCE_WEBSITE_HELP_TEXT</span>
+          <input id="resource_url" type="url" name="resource_url" ng-model="resource.url" ng-trim="true">
+          <span class="error" ng-show="resourceForm.resource_url.$error.url" translate>FORM_NO_VALID_URL</span>
+        </li>
 
-    <li>
-      <label for="resource_description" translate>ADD_RESOURCE_RESOURCE_DESCRIPTION_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_RESOURCE_DESCRIPTION_HELP_TEXT</span>
-      <textarea id="resource_description" name="resource_description" ng-model="resource.description" required ng-trim="true"></textarea>
-      <span class="error" ng-show="resourceForm.resource_description.$error.required" translate>FORM_REQUIRED</span>
-    </li>
+        <li>
+          <label for="resource_description" translate>ADD_RESOURCE_RESOURCE_DESCRIPTION_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_RESOURCE_DESCRIPTION_HELP_TEXT</span>
+          <textarea id="resource_description" name="resource_description" ng-model="resource.description" required ng-trim="true"></textarea>
+          <span class="error" ng-show="resourceForm.resource_description.$error.required" translate>FORM_REQUIRED</span>
+        </li>
 
-    <li>
-      <label for="resource_contributor" translate>ADD_RESOURCE_CONTRIBUTOR_QUESTION</label>
-      <span class="hint" translate>ADD_RESOURCE_CONTRIBUTOR_HELP_TEXT</span>
-      <input id="resource_contributor" type="text" name="resource_contributor" ng-model="resource.contributor" required ng-trim="true">
-      <span class="error" ng-show="resourceForm.resource_contributor.$error.required" translate>FORM_REQUIRED</span>
-    </li>
+        <li>
+          <label for="resource_contributor" translate>ADD_RESOURCE_CONTRIBUTOR_QUESTION</label>
+          <span class="hint" translate>ADD_RESOURCE_CONTRIBUTOR_HELP_TEXT</span>
+          <input id="resource_contributor" type="text" name="resource_contributor" ng-model="resource.contributor" required ng-trim="true">
+          <span class="error" ng-show="resourceForm.resource_contributor.$error.required" translate>FORM_REQUIRED</span>
+        </li>
 
-  </ul>
-  <button type="reset" ng-click="resetForm()" translate>FORM_RESET</button>
-  <button type="submit" translate>FORM_SUBMIT</button>
-</form>
+      </ul>
+      <button type="reset" ng-click="resetForm()" translate>FORM_RESET</button>
+      <button type="submit" translate>FORM_SUBMIT</button>
+    </form>
   </div>
 </div>
