@@ -41,6 +41,7 @@ require('./akermap')
           Firebase.goOnline();
           return sync.$add(data).then(function() {
               Firebase.goOffline();
+              current = data = null;
           });
       };
 

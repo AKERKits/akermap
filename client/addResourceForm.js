@@ -1,6 +1,6 @@
 require('./formModal.js');
 var _ = require('lodash');
-require('./akermap').controller('addResourceForm', function($scope, $log, formModal, mapData) {
+require('./akermap').controller('addResourceForm', function($scope, $log, formModal, mapData, $rootScope) {
     'use strict';
 
     $scope.closeClick = function() {
@@ -29,6 +29,7 @@ require('./akermap').controller('addResourceForm', function($scope, $log, formMo
         $log.debug('form submitted...', data);
         mapData.add(data).then(function() {
             formModal.deactivate();
+            $rootScope.$broadcast('updateFilters');
         });
     };
 });
