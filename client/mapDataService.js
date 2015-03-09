@@ -8,6 +8,7 @@ require('./akermap')
 
         var ref = new Firebase(firebaseLocation);
         var locationsRef = ref.child('locations');
+        var sync = $firebaseArray(locationsRef);
         var data = null;
         var current = null;
 
@@ -25,7 +26,6 @@ require('./akermap')
           });
           */
           Firebase.goOnline();
-          var sync = $firebaseArray(locationsRef);
           sync.$loaded().then(function(list) {
               Firebase.goOffline();
               data.resolve(list);
@@ -36,6 +36,13 @@ require('./akermap')
       function MapDataService() {
           this.categoryFilter = null;
       }
+
+      MapDataService.prototype.add = function(data) {
+          Firebase.goOnline();
+          return sync.$add(data).then(function() {
+              Firebase.goOffline();
+          });
+      };
 
       MapDataService.prototype.get = function() {
           if (current) {

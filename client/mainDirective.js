@@ -3,12 +3,7 @@ require('./akermap').directive('main', function() {
 
     return {
         restrict: 'A',
-        controller: function($scope) {
-            $scope.showAddResourceForm = false;
-
-            this.toggleShowAddResourceForm = function(toggleState) {
-                $scope.showAddResourceForm = angular.isUndefined(toggleState) ? !$scope.showAddResourceForm : !!toggleState;
-            };
+        controller: function($scope) { // jshint unused:false
         }
     };
 });

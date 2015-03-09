@@ -1,9 +1,8 @@
 require('./config');
 require('./mainDirective');
 require('./akerMapDirective');
-require('./akerTableDirective');
 require('./categoryFilterDirective');
-require('./addResourceFormDirective');
+require('./addResourceForm');
 require('socialite-js/socialite.js');
 require('socialite-js/extensions/socialite.facebook.js');
 require('socialite-js/extensions/socialite.twitter.js');

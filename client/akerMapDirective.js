@@ -1,15 +1,16 @@
 require('./geoLocationService');
 require('./mapDataService');
+require('./formModal');
 var styles = require('./map/styles/avocado.json');
 
-require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q) {
+require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $sanitize) {
     'use strict';
 
     return {
         restrict: 'E',
         require: '^main',
         templateUrl: require('./templates/akerMapDirective.html'),
-        link: function($scope, element, attrs, mainCtrl) {
+        link: function($scope) {
 
             function hideAddResourceMarker() {
                 $scope.map.addResourceMarker.latitude = $scope.map.addResourceMarker.longitude = null;
@@ -42,8 +43,12 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
             }
 
             $scope.addResourceMarkerClick = function() {
+                formModal.data = {
+                    latitude: $scope.map.addResourceMarker.latitude,
+                    longitude: $scope.map.addResourceMarker.longitude
+                };
                 hideAddResourceMarker();
-                mainCtrl.toggleShowAddResourceForm(true);
+                formModal.activate();
             };
 
             $scope.map = {

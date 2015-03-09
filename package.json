@@ -33,6 +33,7 @@
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
+    "angular-modal": "^0.5.0",
     "normalize.css": "^3.0.2"
   },
   "repository": {

@@ -25,7 +25,7 @@ module.exports = (function() {
 		},
 		module: {
 			noParse: [
-				/angular-translate(\/|\\)angular-translate\.js/,
+			//	/angular-translate(\/|\\)angular-translate\.js/,
 			],
 			loaders: [
 				{ test: /\.css$/, loader: "style-loader!css-loader" },
@@ -43,9 +43,11 @@ module.exports = (function() {
 				path.resolve('bower_components')
 			],
 			alias: {
-				'ngTable': 'ng-table/dist/ng-table.js',
 				'pascalprecht.translate': 'angular-translate',
-				'uiGmapgoogle-maps': 'angular-google-maps'
+				'uiGmapgoogle-maps': 'angular-google-maps',
+				'btford.modal': "angular-modal",
+				'ngSanitize': 'angular-sanitize',
+				"ng": "angular-translate" // workaround for missing ng-module - this loads angular-translate twice :(
 			}
 		},
 		plugins: [
