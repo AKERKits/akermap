@@ -1,0 +1,12 @@
+{
+    "rules": {
+      "locations": {
+        ".read": true,
+
+        "$location": {
+          ".write": true,
+          ".validate": "!data.exists() && newData.hasChild('name') && newData.child('name').isString() && newData.hasChild('sustainability') && newData.child('sustainability').isNumber() && newData.child('sustainability').val() > 0 && newData.child('sustainability').val() < 6 && newData.hasChild('categories') && newData.hasChild('address') && newData.child('address').isString() && newData.hasChild('description') && newData.child('description').isString() && newData.hasChild('contributor') && newData.child('contributor').isString() && newData.hasChild('accepted') && newData.child('accepted').isBoolean() && newData.child('accepted').val() === true && newData.hasChild('latitude') && newData.child('latitude').isNumber() && newData.hasChild('longitude') && newData.child('longitude').isNumber()"
+        }
+      }
+    }
+}

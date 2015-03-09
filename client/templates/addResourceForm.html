@@ -71,7 +71,7 @@
 
         <li class="accept-local-regulations">
           <div translate>ADD_RESOURCE_LOCAL_REGULATIONS_NOTE</div>
-          <input id="local_regulations" type="checkbox" name="local_regulations" ng-model="resource.accepted" required>
+          <input id="local_regulations" type="checkbox" name="local_regulations" ng-model="resource.accepted" ng-true-value="true" ng-false-value="false" required>
           <label for="local_regulations" translate>ADD_RESOURCE_LOCAL_REGULATIONS_ACCEPT</label>
           <span class="error" ng-show="resourceForm.local_regulations.$error.required" translate>FORM_REQUIRED</span>
         </li>
