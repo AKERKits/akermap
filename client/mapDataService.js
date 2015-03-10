@@ -78,15 +78,35 @@ require('./akermap')
             .then(function setIcons(list) {
                 return uiGmapGoogleMapApi.then(function(maps) {
                     return list.map(function(item) {
-                        var category = 'other';
+                        var category;
+                        var iconData;
                         if (item.intersecting && item.intersecting.length === 1) {
-                            // we can define a specific icon
+                            // we can define a specific icon, because only one category intersects
                             category = item.intersecting[0];
-                        } else if(item.categories.length === 1) {
+                            iconData = categories[category].pin;
+                        } else if (item.categories.length === 1) {
                             category = item.categories[0];
+                            iconData = categories[category].pin;
+                        } else {
+                            // multiple are intersecting
+                            category = Math.min((item.intersecting || item.categories).length - 1, 9) + 'plus';
+                            iconData = {
+                                url: 'images/pins/' + category + '.svg',
+                                size: {
+                                    w: 100,
+                                    h: 100
+                                },
+                                scaled: {
+                                    w: 36,
+                                    h: 36
+                                },
+                                anchor: {
+                                    x: 18,
+                                    y: 36
+                                }
+                            };
                         }
 
-                        var iconData = categories[category].pin;
                         item.icon = {
                             url: iconData.url,
                             size: new maps.Size(iconData.size.w, iconData.size.h),
