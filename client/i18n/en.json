@@ -7,7 +7,7 @@
 	"CATEGORY_SOIL": "Soil & Compost",
 	"CATEGORY_WORMS": "Worms",
 	"CATEGORY_OTHER": "Other: General Agricultural Supplies",
-	"The AKER map": "The AKER map",
+	"AKER_LOGO_ALT": "The AKER logo",
 
 	"ADD_RESOURCE_LOCAL_REGULATIONS_NOTE": "Please refer to local regulations before inputing resources - AKER is not responsible for users not observing their local regulations.",
 	"ADD_RESOURCE_LOCAL_REGULATIONS_ACCEPT": "I understand and accept",
@@ -48,5 +48,10 @@
 	"INFO_WINDOW_RESOURCE_EMAIL" : "Email:",
 	"INFO_WINDOW_RESOURCE_URL" : "Website:",
 	"INFO_WINDOW_RESOURCE_DESCRIPTION" : "Description:",
-	"INFO_WINDOW_RESOURCE_CONTRIBUTOR" : "Contributor:"
+	"INFO_WINDOW_RESOURCE_CONTRIBUTOR" : "Contributor:",
+
+	"NAVIGATION_OPEN_MENU": "Open menu",
+	"NAVIGATION_SHARE_FACEBOOK": "Share on facebook",
+	"NAVIGATION_FORK_GITHUB": "Fork on github",
+	"NAVIGATION_SHARE_TWITTER": "Share on twitter"
 }

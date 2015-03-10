@@ -3,7 +3,12 @@ require('./akermap').directive('main', function() {
 
     return {
         restrict: 'A',
-        controller: function($scope) { // jshint unused:false
+        controller: function($scope) {
+
+            $scope.menuIsOpen = false;
+            $scope.toggleMenu = function(state) {
+                $scope.menuIsOpen = angular.isUndefined(state) ? !$scope.menuIsOpen : !!state;
+            };
         }
     };
 });

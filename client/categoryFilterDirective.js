@@ -15,6 +15,7 @@ require('./akermap')
 
         return {
             restrict: 'E',
+            replace: true,
             require: '^main',
             scope: true,
             templateUrl: require('./templates/categoryFilterDirective.html'),
