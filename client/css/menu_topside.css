@@ -24,8 +24,6 @@ body,
 }
 
 .content-wrap {
-	overflow-y: scroll;
-	-webkit-overflow-scrolling: touch;
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
 }
