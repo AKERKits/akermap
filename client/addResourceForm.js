@@ -9,7 +9,7 @@ require('./akermap').controller('addResourceForm',
         formModal.deactivate();
     };
 
-    $scope.categories = require('./data/categories.json');
+    $scope.categories = require('./categories');
 
     $scope.isAtLeastOneTypeSelected = function(items) {
         return _.any(items);

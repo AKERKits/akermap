@@ -1,6 +1,6 @@
 require('./mapDataService.js');
 require('./templates/categoryFilterDirective.html');
-var categories = require('./data/categories.json');
+var categories = require('./categories');
 
 require('./akermap')
     .directive('categoryFilter',

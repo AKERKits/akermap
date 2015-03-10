@@ -1,6 +1,6 @@
 var Firebase = require('exports?Firebase!firebase');
 var _ = require('lodash');
-var categories = require('./data/categories.json');
+var categories = require('./categories');
 
 require('./akermap')
     .factory('mapData',
@@ -93,7 +93,7 @@ require('./akermap')
                             // multiple are intersecting
                             category = Math.min((item.intersecting || item.categories).length - 1, 9) + 'plus';
                             iconData = {
-                                url: 'images/pins/' + category + '.svg',
+                                url: require('./images/pins/' + category + '.svg'),
                                 size: {
                                     w: 100,
                                     h: 100
