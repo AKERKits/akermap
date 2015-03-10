@@ -1,45 +1,33 @@
-/* global __dirname */
 module.exports = function(grunt) {
   'use strict';
 
+  var webpack = require("webpack");
   var webpackConfig = require("./webpack.config.js");
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     webpack: {
-      main: {
-        // webpack options
-        entry: "./client/entry.js",
-        output: {
-          output: {
-            path: __dirname,
-            filename: "bundle.js"
-          }
-        },
-
-        stats: {
-            // Configure the console output
-            colors: false,
-            modules: true,
-            reasons: true
-        },
-        // stats: false disables the stats output
-
-        storeStatsTo: "xyz", // writes the status to a variable named xyz
-        // you may use it later in grunt i.e. <%= xyz.hash %>
-
-        progress: false, // Don't show progress
-        // Defaults to true
-
-        failOnError: false, // don't report error to grunt if webpack find errors
-        // Use this if webpack errors are tolerable and grunt should continue
-
-        watch: true, // use webpacks watcher
-        // You need to keep the grunt process alive
-
-        keepalive: true, // don't finish the grunt task
-        // Use this in combination with the watch option
-      }
+        options: webpackConfig,
+        build: {
+            stats: {
+                // Configure the console output
+                colors: true,
+                modules: true,
+                reasons: false
+            },
+            plugins: webpackConfig.plugins.concat(
+                new webpack.DefinePlugin({
+                    "process.env": {
+                        // This can have an effect on library size
+                        "NODE_ENV": JSON.stringify("production")
+                    }
+                }),
+                new webpack.optimize.DedupePlugin(),
+                new webpack.optimize.UglifyJsPlugin()
+            ),
+            devtool: "sourcemap",
+            debug: true
+        }
     },
     "webpack-dev-server": {
         options: {
@@ -48,8 +36,13 @@ module.exports = function(grunt) {
             contentBase: 'client/',
         },
         start: {
+            plugins: webpackConfig.plugins.concat(
+                new webpack.HotModuleReplacementPlugin()
+            ),
             keepAlive: true,
             webpack: {
+                cache: true,
+                watch: true,
                 inline: true,
                 devtool: "eval",
                 debug: true
@@ -62,5 +55,5 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask("default", ["webpack-dev-server:start"]);
-
+  grunt.registerTask("build", ["webpack:build"]);
 };

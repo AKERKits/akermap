@@ -10,15 +10,13 @@ module.exports = (function() {
 	var clientDir = path.resolve(__dirname, path.join(__dirname, 'client'));
 
 	return {
-		cache: true,
-		watch: true,
 		entry: {
 			bootstrap: [
-	      "./client/entry.js"
-	    ]
+                "./client/entry.js"
+            ]
 		},
 		output: {
-			path: path.join(__dirname, "assets"),
+			path: path.join(__dirname, 'client', "assets"),
 			publicPath: "assets/",
 			filename: "[name].js",
 			chunkFilename: "[chunkhash].js"
@@ -55,7 +53,6 @@ module.exports = (function() {
 		    new webpack.ResolverPlugin(
 		        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
 		    ),
-		    new webpack.HotModuleReplacementPlugin(),
 		    new NgAnnotatePlugin({
 		        add: true
 			})
