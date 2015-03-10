@@ -1,8 +1,8 @@
 {
   "name": "akermap",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "The AKER map",
+  "main": "client/entry.js",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
