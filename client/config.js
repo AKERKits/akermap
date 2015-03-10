@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    var isDebug = true;
+    var isDebug = false;
     var languages = ['en', 'de'];
 
     require('./akermap')
