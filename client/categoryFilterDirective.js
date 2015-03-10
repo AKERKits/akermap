@@ -2,7 +2,9 @@ require('./mapDataService.js');
 var categories = require('./data/categories.json');
 
 require('./akermap')
-    .directive('categoryFilter', function(mapData, $rootScope) {
+    .directive('categoryFilter',
+    ['mapData', '$rootScope',
+    function(mapData, $rootScope) {
         'use strict';
 
         function getRealSelected(selectedArray) {
@@ -33,4 +35,4 @@ require('./akermap')
                 });
             }
           };
-    });
+    }]);

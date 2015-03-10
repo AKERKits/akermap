@@ -5,7 +5,9 @@ var styles = require('./map/styles/avocado.json');
 var categories = require('./data/categories.json');
 var _ = require('lodash');
 
-require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $sanitize) {
+require('./akermap').directive('akerMap',
+['uiGmapGoogleMapApi', 'geoLocationService', 'mapData', '$log', '$q', 'formModal', '$sanitize',
+function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $sanitize) {
     'use strict';
 
     return {
@@ -195,4 +197,4 @@ require('./akermap').directive('akerMap', function(uiGmapGoogleMapApi, geoLocati
         }
     };
 
-});
+}]);

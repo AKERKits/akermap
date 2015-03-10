@@ -1,4 +1,4 @@
-require('./akermap').factory('formModal', function (btfModal) {
+require('./akermap').factory('formModal', ['btfModal', function (btfModal) {
     'use strict';
 
   return btfModal({
@@ -7,4 +7,4 @@ require('./akermap').factory('formModal', function (btfModal) {
     templateUrl: require('./templates/addResourceForm.html')
   });
 
-});
+}]);

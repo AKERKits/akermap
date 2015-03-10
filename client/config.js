@@ -6,14 +6,14 @@
     require('./akermap')
         .constant('firebaseLocation', 'https://akermap.firebaseio.com')
         .constant('isDebug', isDebug)
-        .config(function(uiGmapGoogleMapApiProvider) {
+        .config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
             uiGmapGoogleMapApiProvider.configure({
                 v: '3.18',
                 //    key: 'your api key',
                 //libraries: 'weather,geometry,visualization,places'
             });
-        })
-        .config(function ($translateProvider) {
+        }])
+        .config(['$translateProvider', function ($translateProvider) {
             /*
             $translateProvider.useStaticFilesLoader({
                 prefix: 'i18n/',
@@ -26,11 +26,11 @@
                 $translateProvider.translations(language, require('./i18n/' + language + '.json'));
             });
             $translateProvider.preferredLanguage(languages[0]);
-        })
-        .config(function($logProvider) {
+        }])
+        .config(['$logProvider', function($logProvider) {
             $logProvider.debugEnabled(isDebug);
-        })
-        .run(function(uiGmapLogger) {
+        }])
+        .run(['uiGmapLogger', function(uiGmapLogger) {
             uiGmapLogger.currentLevel = isDebug ? uiGmapLogger.LEVELS.debug : uiGmapLogger.LEVELS.error;
-        });
+        }]);
 })();

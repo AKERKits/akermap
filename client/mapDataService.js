@@ -3,7 +3,9 @@ var _ = require('lodash');
 var categories = require('./data/categories.json');
 
 require('./akermap')
-    .factory('mapData', function(firebaseLocation, $firebaseArray, $q, $log, uiGmapGoogleMapApi) {
+    .factory('mapData',
+    ['firebaseLocation', '$firebaseArray', '$q', '$log', 'uiGmapGoogleMapApi',
+    function(firebaseLocation, $firebaseArray, $q, $log, uiGmapGoogleMapApi) {
         'use strict';
 
         var ref = new Firebase(firebaseLocation);
@@ -136,4 +138,4 @@ require('./akermap')
 
 
       return new MapDataService();
-    });
+  }]);
