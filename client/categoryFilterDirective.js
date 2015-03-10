@@ -1,4 +1,5 @@
 require('./mapDataService.js');
+require('./templates/categoryFilterDirective.html');
 var categories = require('./data/categories.json');
 
 require('./akermap')

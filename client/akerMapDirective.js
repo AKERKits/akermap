@@ -1,6 +1,8 @@
 require('./geoLocationService');
 require('./mapDataService');
 require('./formModal');
+require('./templates/akerMapDirective.html');
+require('./templates/markerInfoWindow.html');
 var styles = require('./map/styles/avocado.json');
 var categories = require('./data/categories.json');
 var _ = require('lodash');

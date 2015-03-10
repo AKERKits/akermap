@@ -1,3 +1,4 @@
+require('./templates/addResourceForm.html');
 require('./akermap').factory('formModal', ['btfModal', function (btfModal) {
     'use strict';
 
