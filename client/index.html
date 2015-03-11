@@ -83,6 +83,12 @@
             </nav>
         </div>
         <button class="menu-button" ng-click="toggleMenu()" translate>NAVIGATION_OPEN_MENU</button>
+        <a class="igg-overlay" href="https://www.indiegogo.com/projects/1143458" target="_blank" title="{{ 'GET_YOUR_AKER_KITS_NOW' | translate }}">
+            <img ng-src="{{iggLogo}}" alt="{{'IGG_LOGO_ALT' | translate}}">
+            <span translate>
+                GET_YOUR_AKER_KITS_NOW_SHORT
+            </span>
+        </a>
         <div class="content-wrap">
             <div class="content" ng-click="toggleMenu(false)">
                 <aker-map/>
