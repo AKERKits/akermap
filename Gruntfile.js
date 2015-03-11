@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         build: {
             stats: {
                 // Configure the console output
-                colors: true,
+                colors: false,
                 modules: true,
                 reasons: false
             },
