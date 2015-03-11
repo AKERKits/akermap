@@ -2,7 +2,7 @@
   "name": "akermap",
   "version": "0.0.1",
   "description": "The AKER map",
-  "main": "client/entry.js",
+  "main": "index.js",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -35,10 +35,15 @@
   },
   "dependencies": {
     "angular-modal": "^0.5.0",
-    "normalize.css": "^3.0.2"
+    "express": "^4.12.2",
+    "normalize.css": "^3.0.2",
+    "serve-static": "^1.9.1"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/AKERKits/akermap.git"
+  },
+  "engines": {
+    "node": "0.12.x"
   }
 }
