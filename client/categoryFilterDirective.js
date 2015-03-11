@@ -17,8 +17,7 @@ require('./akermap')
         var categoryArray = Object.keys(categories);
 
         return {
-            restrict: 'E',
-            replace: true,
+            restrict: 'A',
             require: '^main',
             scope: true,
             templateUrl: require('./templates/categoryFilterDirective.html'),

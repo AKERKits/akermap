@@ -1,8 +1,17 @@
 @import "~elements/elements.less";
 @import "~angular-modal/modal.css";
-@import "./menu_topside.css";
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+@text-color: black;
+@burger-color: white;
+@container-background: #F7F7FA;
+@hover-color: #c94e50;
+@content-background: white;
+@add-resource-form-background-color: white;
+
+
+@import "./menu_topside.less";
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
 
 * {
   font-family: 'Raleway', sans-serif;
@@ -19,8 +28,25 @@
   }
 }
 
+.igg-link {
+    float: right;
+    span {
+        float: left;
+        &.igg-logo {
+            img {
+                height: 42px;
+            }
+        }
+        &.igg-phrase {
+            text-decoration: underline;
+            margin-left: 1em;
+        }
+
+    }
+}
+
 .add-resource-form {
-  background-color: white;
+  background-color: @add-resource-form-background-color;
   padding: 0.5em;
   .drop-shadow(0, 1px, 2px, 0.2);
   .rounded(5px);
@@ -101,15 +127,39 @@
 }
 
 .category-filter {
-  //width: 300px;
-    ul {
-      padding: 0.5em;
-      list-style-type: none;
+    .category-filter-category {
+        color: @text-color;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        label {
+            padding-left: 0.5em;
+        }
     }
+}
+
+.tagline {
+    font-size: larger;
+    font-weight: bold;
+    color: @text-color;
 }
 
 .socialite {
   font-size: small;
+
+  img {
+      width: 32px;
+      height: 32px;
+  }
+}
+
+.filter-explanation {
+    font-weight: 500;
+    color: @text-color;
+}
+
+.menu-side-filter {
+    padding: 0.5em;
 }
 
 @categories: bees, beekeeping_equipment, soil, worms, chickens, other, plants, seeds;

@@ -7,7 +7,12 @@
 	"CATEGORY_SOIL": "Soil & Compost",
 	"CATEGORY_WORMS": "Worms",
 	"CATEGORY_OTHER": "Other: General Agricultural Supplies",
+
 	"AKER_LOGO_ALT": "The AKER logo",
+	"IGG_LOGO_ALT": "The IndieGoGo logo",
+	"TWITTER_LOGO_ALT": "The twitter logo",
+	"GITHUB_LOGO_ALT": "The github logo",
+	"FACEBOOK_LOGO_ALT": "The facebook logo",
 
 	"ADD_RESOURCE_LOCAL_REGULATIONS_NOTE": "Please refer to local regulations before inputing resources - AKER is not responsible for users not observing their local regulations.",
 	"ADD_RESOURCE_LOCAL_REGULATIONS_ACCEPT": "I understand and accept",
@@ -53,5 +58,9 @@
 	"NAVIGATION_OPEN_MENU": "Open menu",
 	"NAVIGATION_SHARE_FACEBOOK": "Share on facebook",
 	"NAVIGATION_FORK_GITHUB": "Fork on github",
-	"NAVIGATION_SHARE_TWITTER": "Share on twitter"
+	"NAVIGATION_SHARE_TWITTER": "Share on twitter",
+
+	"GET_YOUR_AKER_KITS_NOW": "Get your AKER Kit now on IndieGoGo!",
+	"TAGLINE": "Urban Homesteading Kits",
+	"FILTER_EXPLANATION": "Find homesteading resources near you:"
 }

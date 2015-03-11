@@ -54,19 +54,33 @@
         <div class="menu-wrap">
             <nav class="menu-top">
                 <div class="profile">
-                    <img style="height: 42px" src="images/logo-horizontal.svg" alt="{{'AKER_LOGO_ALT' | translate }}">
-                    <span>&nbsp;</span>
+                    <a href="http://www.aker.me" target="_blank">
+                        <img style="height: 42px" ng-src="{{logo}}" alt="{{'AKER_LOGO_ALT' | translate }}">
+                    </a>
+                    <span class="tagline" translate>TAGLINE</span>
+                </div>
+                <a href="https://www.indiegogo.com/projects/1143458" target="_blank" class="igg-link">
+                    <span class="igg-logo">
+                        <img ng-src="{{iggLogo}}" alt="{{'IGG_LOGO_ALT' | translate}}">
+                    </span>
+                    <span class="igg-phrase" translate>GET_YOUR_AKER_KITS_NOW</span>
+                </a>
+            </nav>
+            <nav class="menu-side">
+                <div class="menu-side-filter">
+                    <span class="filter-explanation" translate>FILTER_EXPLANATION</span>
+                    <div class="category-filter" category-filter>
+                    </div>
                 </div>
                 <div class="icon-list">
                     <a class="socialite facebook-like" href="http://www.facebook.com/sharer.php?u=http://map.aker.me" data-href="http://map.aker.me" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="segoe ui" rel="nofollow"
-                    target="_blank" translate>NAVIGATION_SHARE_FACEBOOK</a>
+                    target="_blank" title="{{ 'NAVIGATION_SHARE_FACEBOOK' | translate}}"><img ng-src="{{facebookLogo}}" alt="{{ 'FACEBOOK_LOGO_ALT' | translate}}"></a>
 
-                    <a class="socialite github-fork" href="https://github.com/AKERKits/akermap" data-user="AKERKits" data-repo="akermap" data-type="fork" data-count="true" target="_blank" translate>NAVIGATION_FORK_GITHUB</a>
+                    <a class="socialite github-fork" href="https://github.com/AKERKits/akermap" data-user="AKERKits" data-repo="akermap" data-type="fork" data-count="true" target="_blank" title="{{ 'NAVIGATION_FORK_GITHUB' | translate}}"><img ng-src="{{githubLogo}}" alt="{{ 'GITHUB_LOGO_ALT' | translate}}"></a>
 
-                    <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://map.aker.me" data-dnt="true" rel="nofollow" target="_blank" translate>NAVIGATION_SHARE_TWITTER</a>
+                    <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://map.aker.me" data-dnt="true" rel="nofollow" target="_blank" title="{{ 'NAVIGATION_SHARE_TWITTER' | translate}}"><img ng-src="{{twitterLogo}}" alt="{{ 'TWITTER_LOGO_ALT' | translate}}"></a>
                 </div>
             </nav>
-            <category-filter/>
         </div>
         <button class="menu-button" ng-click="toggleMenu()" translate>NAVIGATION_OPEN_MENU</button>
         <div class="content-wrap">

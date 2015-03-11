@@ -1,6 +1,4 @@
-<nav class="menu-side">
-      <span ng-repeat="category in categories">
-        <input type="checkbox" ng-checked="selected[$index]" ng-model="selected[$index]" id="cat_{{category}}" ng-true-value="'{{category}}'">
-        <label for="cat_{{category}}" translate>{{ 'CATEGORY_' + category.toUpperCase() }}</label>
-      </span>
-</nav>
+<span class="category-filter-category" ng-repeat="category in categories" title="{{ 'CATEGORY_' + category.toUpperCase() | translate }}">
+    <input type="checkbox" ng-checked="selected[$index]" ng-model="selected[$index]" id="cat_{{category}}" ng-true-value="'{{category}}'">
+    <label for="cat_{{category}}" translate>{{ 'CATEGORY_' + category.toUpperCase() }}</label>
+</span>
