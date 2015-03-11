@@ -4,12 +4,13 @@
 
 ### Windows
 1. `setup.bat`
-1. `npm install --ignore-scripts`
+2. `npm install`
 3. `dev.bat`
 4. open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/).
 
 ### *nix
-1. `npm install`
+1. `./setup`
+2. `npm install`
 3. `./dev`
 4. open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/).
 
