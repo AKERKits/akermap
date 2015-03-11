@@ -185,7 +185,7 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 });
 
                 $scope.map.addResourceMarker.icon = {
-                        url: 'images/pins/add.svg',
+                        url: require('./images/pins/add.svg'),
                         size: new maps.Size(100, 100),
                         scaledSize: new maps.Size(36, 36),
                         anchor: new maps.Point(18, 36)
