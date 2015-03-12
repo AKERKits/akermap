@@ -24,9 +24,7 @@ module.exports = function(grunt) {
                 }),
                 new webpack.optimize.DedupePlugin(),
                 new webpack.optimize.UglifyJsPlugin()
-            ),
-            devtool: "sourcemap",
-            debug: true
+            )
         }
     },
     "webpack-dev-server": {
