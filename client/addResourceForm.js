@@ -11,6 +11,10 @@ require('./akermap').controller('addResourceForm',
 
     $scope.categories = require('./categories');
 
+    $scope.markers = {
+        coords: [formModal.data.latitude, formModal.data.longitude]
+    };
+
     $scope.isAtLeastOneTypeSelected = function(items) {
         return _.any(items);
     };

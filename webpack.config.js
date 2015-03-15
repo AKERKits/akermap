@@ -14,6 +14,7 @@ module.exports = (function() {
             bootstrap: [
                 "./client/entry.js"
             ]
+<<<<<<< HEAD
         },
         output: {
             path: path.join(__dirname, 'client', "assets"),
@@ -60,6 +61,7 @@ module.exports = (function() {
                 'uiGmapgoogle-maps': 'angular-google-maps/dist/angular-google-maps.js',
                 'btford.modal': "angular-modal",
                 'ngSanitize': 'angular-sanitize',
+                'wu.staticGmap': 'angular-google-staticmaps',
                 "ng": "angular-translate" // workaround for missing ng-module - this loads angular-translate twice :(
             }
         },
