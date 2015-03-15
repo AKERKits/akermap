@@ -1,4 +1,4 @@
-# The AKER map
+# [![Build Status](https://travis-ci.org/AKERKits/akermap.svg)](https://travis-ci.org/AKERKits/akermap) The AKER map
 
 ## Quickstart
 
