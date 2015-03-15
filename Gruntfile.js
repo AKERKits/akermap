@@ -20,7 +20,8 @@ module.exports = function(grunt) {
                     "process.env": {
                         // This can have an effect on library size
                         "NODE_ENV": JSON.stringify("production")
-                    }
+                    },
+                    "DEBUG": false
                 }),
                 new webpack.optimize.DedupePlugin(),
                 new webpack.optimize.UglifyJsPlugin()
@@ -35,7 +36,10 @@ module.exports = function(grunt) {
         },
         start: {
             plugins: webpackConfig.plugins.concat(
-                new webpack.HotModuleReplacementPlugin()
+                new webpack.HotModuleReplacementPlugin(),
+                new webpack.DefinePlugin({
+                    "DEBUG": true
+                })
             ),
             keepAlive: true,
             webpack: {

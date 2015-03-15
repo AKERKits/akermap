@@ -1,6 +1,7 @@
+/* global DEBUG */
 (function() {
     'use strict';
-    var isDebug = false;
+    var isDebug = DEBUG; // This comes from the webpack config
     var languages = ['en', 'de'];
 
     require('./akermap')
@@ -29,6 +30,9 @@
         }])
         .config(['$logProvider', function($logProvider) {
             $logProvider.debugEnabled(isDebug);
+        }])
+        .config(['$compileProvider', function($compileProvider) {
+            $compileProvider.debugInfoEnabled(isDebug);
         }])
         .run(['uiGmapLogger', function(uiGmapLogger) {
             uiGmapLogger.currentLevel = isDebug ? uiGmapLogger.LEVELS.debug : uiGmapLogger.LEVELS.error;
