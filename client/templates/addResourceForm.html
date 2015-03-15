@@ -13,7 +13,7 @@
         <li>
           <label for="resource_sustainability" translate>ADD_RESOURCE_SUSTAINABILITY_QUESTION</label>
           <span class="hint" translate>ADD_RESOURCE_SUSTAINABILITY_HELP_TEXT</span>
-          <span ng-repeat="i in [1,2,3,4,5]"><input name="resource_sustainability" type="radio" ng-model="resource.sustainability" ng-value="{{i}}" ng-required="!resource.sustainability"> {{i}} </span>
+          <span ng-repeat="i in [1,2,3,4,5]"><input name="resource_sustainability" type="radio" ng-model="resource.sustainability" ng-value="{{::i}}" ng-required="!resource.sustainability"> {{::i}} </span>
           <span class="error" ng-show="resourceForm.resource_sustainability.$error.required" translate>FORM_REQUIRED</span>
         </li>
 
@@ -21,7 +21,7 @@
           <label for="resource_categories" translate>ADD_RESOURCE_TYPE_QUESTION</label>
           <span class="hint" translate>ADD_RESOURCE_TYPE_HELP_TEXT</span>
           <div ng-repeat="(category, value) in ::categories" class="resource-categories-list">
-            <input type="checkbox" id="resource_categories_{{category}}" name="resource_categories" ng-model="resource.categories[$index]" ng-true-value="'{{category}}'" ng-required="!isAtLeastOneTypeSelected(resource.categories)">
+            <input type="checkbox" id="resource_categories_{{::category}}" name="resource_categories" ng-model="resource.categories[$index]" ng-true-value="'{{::category}}'" ng-required="!isAtLeastOneTypeSelected(resource.categories)">
             <label for="resource_categories_{{::category}}" translate>{{:: 'CATEGORY_' + category.toUpperCase() }}</label>
           </div>
           <span class="error" ng-show="resourceForm.resource_categories.$error.required" translate>FORM_REQUIRED_AT_LEAST_ONE</span>
