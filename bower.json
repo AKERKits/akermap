@@ -13,10 +13,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular-google-maps": "~2.0.12",
-    "modernizr": "~2.8.3",
-    "respond": "~1.4.2",
-    "angular-translate": "~2.6.0",
+    "angular-google-maps": "2.0.16",
+    "modernizr": "2.8.3",
+    "respond": "1.4.2",
+    "angular-translate": "2.6.1",
     "angularfire": "1.0.0",
     "socialite-js": "2.1",
     "elements": "dmitryf/elements",
