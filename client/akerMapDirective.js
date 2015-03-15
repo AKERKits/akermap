@@ -197,9 +197,6 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 });
             });
 
-            // test data
-            // $scope.markers = require('./data/bogus.json');
-
             $q.all({
                 map: locate(),
                 markers: updateMarkers(),
