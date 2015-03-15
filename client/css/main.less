@@ -14,6 +14,8 @@
 @add-resource-box-focus-border-color: #4d90fe;
 
 
+@menu-transition-duration: 0.3s;
+
 @import "./menu_topside.less";
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,700);
@@ -32,8 +34,8 @@
     z-index: 4;
     background-color: @igg-overlay-background-color;
     padding: 0.2em;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
+    -webkit-transition: -webkit-transform @menu-transition-duration;
+    transition: transform @menu-transition-duration;
     text-decoration: none;
 
     &:hover {
