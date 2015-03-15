@@ -14,7 +14,6 @@ module.exports = (function() {
             bootstrap: [
                 "./client/entry.js"
             ]
-<<<<<<< HEAD
         },
         output: {
             path: path.join(__dirname, 'client', "assets"),
