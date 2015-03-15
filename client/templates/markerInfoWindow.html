@@ -6,7 +6,7 @@
     </tr>
     <tr ng-if="parameter.sustainability">
       <th translate>INFO_WINDOW_RESOURCE_SUSTAINABILITY</th>
-      <td translate translate-value-rating="{{parameter.sustainability}}">INFO_WINDOW_RESOURCE_SUSTAINABILITY_TEXT</td>
+      <td translate translate-value-rating="{{:: parameter.sustainability}}">INFO_WINDOW_RESOURCE_SUSTAINABILITY_TEXT</td>
     </tr>
     <tr ng-if="parameter.categories &amp;&amp; parameter.categories.length > 0">
       <th translate>INFO_WINDOW_RESOURCE_TYPES</th>
@@ -14,40 +14,40 @@
         <table class="resource-category-table">
           <tr>
             <td ng-repeat="category in parameter.categories">
-              <div class="category-{{category}}"></div>
+              <div class="category-{{:: category}}"></div>
             </td>
           </tr>
           <tr>
-            <th ng-repeat="category in parameter.categories" translate>
+            <th ng-repeat="category in ::parameter.categories" translate>
               {{'CATEGORY_' + category.toUpperCase()}}
             </th>
           </tr>
         </table>
       </td>
     </tr>
-    <tr ng-if="parameter.address">
+    <tr ng-if="::parameter.address">
       <th translate>INFO_WINDOW_RESOURCE_ADDRESS</th>
       <td><div ng-bind="parameter.address"></div></td>
     </tr>
-    <tr ng-if="parameter.phone">
+    <tr ng-if="::parameter.phone">
       <th translate>INFO_WINDOW_RESOURCE_PHONE</th>
       <td><div ng-bind="parameter.phone"></div></td>
     </tr>
-    <tr ng-if="parameter.email">
+    <tr ng-if="::parameter.email">
       <th translate>INFO_WINDOW_RESOURCE_EMAIL</th>
       <td><a ng-href="mailto:{{parameter.email}}" target="_blank">{{parameter.email}}</a></td>
     </tr>
-    <tr ng-if="parameter.url">
+    <tr ng-if="::parameter.url">
       <th translate>INFO_WINDOW_RESOURCE_URL</th>
-      <td><a ng-href="{{parameter.url}}" target="_blank">{{parameter.url}}</a></td>
+      <td><a ng-href="{{::parameter.url}}" target="_blank">{{parameter.url}}</a></td>
     </tr>
-    <tr ng-if="parameter.description">
+    <tr ng-if="::parameter.description">
       <th translate>INFO_WINDOW_RESOURCE_DESCRIPTION</th>
       <td><div ng-bind="parameter.description"></div></td>
     </tr>
-    <tr ng-if="parameter.contributor">
+    <tr ng-if="::parameter.contributor">
       <th translate>INFO_WINDOW_RESOURCE_CONTRIBUTOR</th>
-      <td><div ng-bind="parameter.contributor"></div></td>
+      <td><div ng-bind="::parameter.contributor"></div></td>
     </tr>
   <table>
 </div>
