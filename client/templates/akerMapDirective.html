@@ -1,4 +1,11 @@
-<ui-gmap-google-map events="map.events" center='map.center' zoom='map.zoom' bounds="map.bounds" refresh="map.refresh" options="mapOptions" draggable="true">
+<ui-gmap-google-map control="map.control" events="map.events" center='map.center' zoom='map.zoom' bounds="map.bounds" refresh="map.refresh" options="mapOptions" draggable="true">
+
+    <ui-gmap-search-box
+        options="addResourceBox.options"
+        template="addResourceBox.template"
+        events="addResourceBox.events"
+        position="addResourceBox.position">
+    </ui-gmap-search-box>
 
   <ui-gmap-markers
     models='markers'
@@ -18,8 +25,12 @@
     options="map.addResourceMarker.options"
     click="addResourceMarkerClick()"
   >
-    <ui-gmap-window show="true" closeClick="addResourceMarkerInfoWindowCloseClick()" options="{pixelOffset: {width: -36, height: 0, x: -36}}">
-        <span translate>ADD_RESOURCE_MARKER_LABEL</span>
+    <ui-gmap-window
+        show="true"
+        closeClick="addResourceMarkerInfoWindowCloseClick()"
+        options="{pixelOffset: {width: -36, height: 0, x: -36}}"
+    >
+        <span style="white-space: nowrap;" translate>ADD_RESOURCE_MARKER_LABEL</span>
     </ui-gmap-window>
   </ui-gmap-marker>
 

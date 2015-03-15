@@ -63,5 +63,7 @@
 	"GET_YOUR_AKER_KITS_NOW": "Get your AKER Kit now on IndieGoGo!",
 	"GET_YOUR_AKER_KITS_NOW_SHORT": "Get your AKER Kit now!",
 	"TAGLINE": "Urban Homesteading Kits",
-	"FILTER_EXPLANATION": "Find homesteading resources near you:"
+	"FILTER_EXPLANATION": "Find homesteading resources near you:",
+
+	"SEARCH_FOR_PLACE_TO_ADD": "Search for a place to add a resource"
 }

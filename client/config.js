@@ -11,7 +11,7 @@
             uiGmapGoogleMapApiProvider.configure({
                 v: '3.18',
                 //    key: 'your api key',
-                //libraries: 'weather,geometry,visualization,places'
+                libraries: 'places'
             });
         }])
         .config(['$translateProvider', function ($translateProvider) {

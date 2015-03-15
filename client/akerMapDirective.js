@@ -3,6 +3,7 @@ require('./mapDataService');
 require('./formModal');
 require('./templates/akerMapDirective.html');
 require('./templates/markerInfoWindow.html');
+require('./templates/addResourceBox.html');
 var styles = require('./map/styles/avocado.json');
 var categories = require('./categories');
 var _ = require('lodash');
@@ -57,6 +58,50 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 formModal.activate();
             };
 
+            $scope.addResourceBox = {
+                options: {},
+                template: require('./templates/addResourceBox.html'),
+                events: {
+                    'places_changed': function(searchBox) {
+                        var places = searchBox.getPlaces();
+
+                        if (places.length === 0) {
+                          return;
+                        }
+                        var place = places[0];
+
+                        var map = $scope.map.control.getGMap();
+                        if (place.geometry.viewport) {
+                            map.fitBounds(place.geometry.viewport);
+                        } else {
+                            map.setCenter(place.geometry.location);
+                            map.setZoom(16);
+                        }
+                        var latLng = place.geometry.location;
+                        showAddResourceMarker(latLng.lat(), latLng.lng());
+                    }
+                },
+                position: 'TOP_CENTER'
+            };
+
+
+            function showAddResourceMarker(latitude, longitude) {
+                hideMarkerInfoWindow();
+
+                if ($scope.map.addResourceMarker.latitude && $scope.map.addResourceMarker.longitude) {
+                    hideAddResourceMarker();
+                    $scope.$apply();
+                }
+
+                angular.extend($scope.map.addResourceMarker, {
+                    latitude: latitude,
+                    longitude: longitude
+                });
+
+                //scope apply required because this event handler is outside of the angular domain
+                $scope.$apply();
+            }
+
             $scope.map = {
                 refresh: false,
                 bounds: {},
@@ -67,28 +112,18 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                     }
                 },
                 events: {
-                    click: function (mapModel, eventName, originalEventArgs) {
+                    click: function (map, eventName, originalEventArgs) {
                         // 'this' is the directive's scope
-                        hideMarkerInfoWindow();
-                        function show() {
-                            var e = originalEventArgs[0];
-                            angular.extend($scope.map.addResourceMarker, {
-                                latitude: e.latLng.lat(),
-                                longitude: e.latLng.lng()
-                            });
-
-                            //scope apply required because this event handler is outside of the angular domain
-                            $scope.$apply();
-                        }
-
-                        if ($scope.map.addResourceMarker.latitude && $scope.map.addResourceMarker.longitude) {
-                            hideAddResourceMarker();
-                            $scope.$apply();
-                        }
-                        show();
-
+                        var e = originalEventArgs[0];
+                        showAddResourceMarker(e.latLng.lat(), e.latLng.lng());
+                    },
+                    'bounds_changed': function(map) {
+                        var bounds = map.getBounds();
+                        $log.debug('biasing add resource box towards map bounds');
+                        $scope.addResourceBox.options.bounds = bounds;
                     }
-                }
+                },
+                control: {}
             };
             $scope.mapOptions = {};
             $scope.markers = [];

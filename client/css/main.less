@@ -9,11 +9,14 @@
 @hover-color: #c94e50;
 @content-background: white;
 @add-resource-form-background-color: white;
+@add-resource-box-shadow-color: rgba(0, 0, 0, 0.3);
+@add-resource-box-background-color: white;
+@add-resource-box-focus-border-color: #4d90fe;
 
 
 @import "./menu_topside.less";
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,700);
 
 * {
   font-family: 'Raleway', sans-serif;
@@ -45,6 +48,28 @@
         font-weight: bold;
         color: @text-color;
     }
+}
+
+.add-resource-box {
+    margin-top: 1em;
+    border: 1px solid transparent;
+    .box-shadow(0 2px 6px @add-resource-box-shadow-color);
+    .box-sizing(border-box);
+    .border-radius(2px, 0, 0, 2px);
+
+    height: 32px;
+    outline: none;
+
+    &:focus {
+        border-color: @add-resource-box-focus-border-color;
+    }
+    background-color: @add-resource-box-background-color;
+    font-size: larger;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 300px;
 }
 
 .content {
