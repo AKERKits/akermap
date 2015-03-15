@@ -42,7 +42,7 @@ module.exports = (function() {
 			],
 			alias: {
 				'pascalprecht.translate': 'angular-translate',
-				'uiGmapgoogle-maps': 'angular-google-maps',
+				'uiGmapgoogle-maps': 'angular-google-maps/dist/angular-google-maps.js',
 				'btford.modal': "angular-modal",
 				'ngSanitize': 'angular-sanitize',
 				"ng": "angular-translate" // workaround for missing ng-module - this loads angular-translate twice :(
