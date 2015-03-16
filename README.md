@@ -21,7 +21,7 @@ The live version can be found on [map.aker.me](http://map.aker.me).
 4. open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/).
 
 ### *nix
-1. `./setup`
+1. `./setup` (if you don't already have grunt-cli and bower installed)
 2. `npm install`
 3. `./dev`
 4. open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/).
