@@ -33,6 +33,7 @@
           <span class="hint" translate>ADD_RESOURCE_RESOURCE_ADDRESS_HELP_TEXT</span>
           <input id="resource_address" type="text" name="resource_address" ng-model="resource.address" required ng-trim="true">
           <span class="error" ng-show="resourceForm.resource_address.$error.required" translate>FORM_REQUIRED</span>
+          <static-gmap size="100x100" markers="markers" sensor="false" zoom="14"></static-gmap>
         </li>
 
         <li>

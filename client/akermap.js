@@ -5,5 +5,6 @@ module.exports = angular.module('akermap', [
     'uiGmapgoogle-maps',
     'firebase',
     'btford.modal',
-    'ngSanitize'
+    'ngSanitize',
+    'wu.staticGmap'
 ]);
