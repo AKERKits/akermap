@@ -1,6 +1,7 @@
 require('./geoLocationService');
 require('./mapDataService');
 require('./formModal');
+require('./fabLabDataService');
 require('./templates/akerMapDirective.html');
 require('./templates/markerInfoWindow.html');
 require('./templates/addResourceBox.html');
@@ -9,8 +10,8 @@ var categories = require('./categories');
 var _ = require('lodash');
 
 require('./akermap').directive('akerMap',
-['uiGmapGoogleMapApi', 'geoLocationService', 'mapData', '$log', '$q', 'formModal', '$sanitize',
-function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $sanitize) {
+['uiGmapGoogleMapApi', 'geoLocationService', 'mapData', '$log', '$q', 'formModal', '$sanitize', 'fabLabDataService',
+function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $sanitize, fabLabDataService) {
     'use strict';
 
     return {
@@ -33,7 +34,7 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                     function success(geoLocatedCoords) {
                         return {
                           center: geoLocatedCoords,
-                          zoom: 12
+                          zoom: 3
                         };
                     },
                     function useFallback() {
@@ -43,7 +44,7 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                             latitude: 39.7643389,
                             longitude: -104.8551114
                           },
-                          zoom: 9
+                          zoom: 3
                         };
                     }
                 );
@@ -200,10 +201,12 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
             $q.all({
                 map: locate(),
                 markers: updateMarkers(),
-                maps: uiGmapGoogleMapApi
+                maps: uiGmapGoogleMapApi,
+                fabLabMarkers: fabLabDataService.get()
             }).then(function(data) {
                 var map = data.map;
                 var maps = data.maps;
+                var fabLabMarkers = data.fabLabMarkers;
 
                 angular.extend($scope.mapOptions, {
                     styles: styles,
@@ -225,6 +228,50 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 $scope.map.addResourceMarker.options.animation = maps.Animation.DROP;
 
                 $scope.markerInfoWindow.options.pixelOffset = new maps.Size(0, -36);
+
+
+                function geocodeFabLabMarkers(markers) {
+                    var geocoder = new maps.Geocoder();
+                    var icon = {
+                        url: require('./images/pins/fablab.svg'),
+                        size: new maps.Size(100, 100),
+                        scaledSize: new maps.Size(36, 36),
+                        anchor: new maps.Point(18, 36)
+                    };
+                    var promises = markers.map(function(marker) {
+                        var deferred = $q.defer();
+                        geocoder.geocode({
+                            'address': marker.streetaddresscitystatezip
+                        }, function(results, status) {
+                            if (status === maps.GeocoderStatus.OK) {
+                                var location = results[0].geometry.location;
+                                marker.latitude = location.lat();
+                                marker.longitude = location.lng();
+                                marker.icon = icon;
+                                marker.show = false;
+                                marker.onClick = function() {
+                                    marker.show = !marker.show;
+                                    $scope.$apply();
+                                };
+                                deferred.resolve(marker);
+                            } else {
+                                $log.warn('geocoding', marker.streetaddresscitystatezip, 'failed', status);
+                                deferred.resolve(null);
+                            }
+                        });
+                        return deferred.promise;
+                    });
+                    return $q.all(promises).then(function(markers) {
+                        return markers.filter(function(marker) {
+                            return marker !== null;
+                        });
+                    });
+                }
+
+                geocodeFabLabMarkers(fabLabMarkers).then(function(markers) {
+                    $log.debug('fablab markers', markers);
+                    $scope.fabLabMarkers = markers;
+                });
 
                 angular.extend($scope.map, map);
             });
