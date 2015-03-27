@@ -2,7 +2,7 @@
   <table class="resource-main-table">
     <tr ng-if="parameter.name">
       <th translate>INFO_WINDOW_RESOURCE_NAME</th>
-      <td><div ng-bind="parameter.name"></div></td>
+      <td><div ng-bind="::parameter.name"></div></td>
     </tr>
     <tr ng-if="parameter.sustainability">
       <th translate>INFO_WINDOW_RESOURCE_SUSTAINABILITY</th>
@@ -27,23 +27,23 @@
     </tr>
     <tr ng-if="::parameter.address">
       <th translate>INFO_WINDOW_RESOURCE_ADDRESS</th>
-      <td><div ng-bind="parameter.address"></div></td>
+      <td><div ng-bind="::parameter.address"></div></td>
     </tr>
     <tr ng-if="::parameter.phone">
       <th translate>INFO_WINDOW_RESOURCE_PHONE</th>
-      <td><div ng-bind="parameter.phone"></div></td>
+      <td><div ng-bind="::parameter.phone"></div></td>
     </tr>
     <tr ng-if="::parameter.email">
       <th translate>INFO_WINDOW_RESOURCE_EMAIL</th>
-      <td><a ng-href="mailto:{{parameter.email}}" target="_blank">{{parameter.email}}</a></td>
+      <td><a ng-href="mailto:{{::parameter.email}}" target="_blank">{{::parameter.email}}</a></td>
     </tr>
     <tr ng-if="::parameter.url">
       <th translate>INFO_WINDOW_RESOURCE_URL</th>
-      <td><a ng-href="{{::parameter.url}}" target="_blank">{{parameter.url}}</a></td>
+      <td><a ng-href="{{::parameter.url}}" target="_blank">{{::parameter.url}}</a></td>
     </tr>
     <tr ng-if="::parameter.description">
       <th translate>INFO_WINDOW_RESOURCE_DESCRIPTION</th>
-      <td><div ng-bind="parameter.description"></div></td>
+      <td><div ng-bind="::parameter.description"></div></td>
     </tr>
     <tr ng-if="::parameter.contributor">
       <th translate>INFO_WINDOW_RESOURCE_CONTRIBUTOR</th>
