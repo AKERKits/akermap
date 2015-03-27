@@ -142,11 +142,9 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
             }
 
             function reInitInfoWindowDisplay() {
-                // make sure the template content is updated by destroying the window first
                 hideMarkerInfoWindow();
                 hideFabLabInfoWindow();
-
-                hideAddResourceMarker(); // if the add resource marker was open, hide that as well
+                hideAddResourceMarker();
                 $scope.$apply();
             }
 
@@ -250,6 +248,13 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                     $scope.markers = list;
                 });
             }
+
+            $scope.$watch('showFabLabWorkshops', function(newShow, oldShow) {
+                $log.debug('moo');
+                if(newShow !== oldShow && !newShow) {
+                    hideFabLabInfoWindow();
+                }
+            });
 
             $scope.$on('updateFilters', function() {
                 $log.debug('updating markers and refreshing map');
