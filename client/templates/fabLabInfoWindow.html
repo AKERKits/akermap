@@ -1,0 +1,45 @@
+<div class="fablab-info-window">
+  <table class="fablab-table">
+    <tr>
+      <th translate>WORKSHOP_NAME</th>
+      <td ng-bind="::parameter.workshop"></td>
+    </tr>
+
+    <tr>
+      <th translate>WORKSHOP_AKER_KIT</th>
+      <td ng-bind="::parameter.kit"></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_SW</th>
+      <td ng-bind="::parameter.software"></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_CNC</th>
+      <td ng-bind="::parameter.router"></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_EMAIL</th>
+      <td><a target="_blank" ng-href="mailto:{{::parameter.email}}">{{::parameter.email}}</a></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_PHONE</th>
+      <td ng-bind="::parameter.phone"></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_URL</th>
+      <td><a target="_blank" ng-href="{{::parameter.url}}">{{::parameter.url}}</a></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_CONTACT</th>
+      <td ng-bind="::parameter.contact"></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_ADDRESS</th>
+      <td ng-bind="::parameter.address"></td>
+    </tr>
+    <tr>
+      <th translate>WORKSHOP_CAP</th>
+      <td ng-bind="::parameter.capacity"></td>
+    </tr>
+  </table>
+</div>

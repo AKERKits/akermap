@@ -69,7 +69,12 @@
             <nav class="menu-side">
                 <div class="menu-side-filter">
                     <span class="filter-explanation" translate>FILTER_EXPLANATION</span>
-                    <div class="category-filter" category-filter>
+                    <div class="category-filter">
+                      <category-filter></category-filter>
+                      <span class="category-filter-category" title="{{:: 'FAB_LAB_WORKSHOPS' | translate }}">
+                          <input type="checkbox" ng-model="showFabLabWorkshops" id="fab_lab_workshops">
+                          <label for="fab_lab_workshops" translate>FAB_LAB_WORKSHOPS</label>
+                      </span>
                     </div>
                 </div>
                 <div class="icon-list">

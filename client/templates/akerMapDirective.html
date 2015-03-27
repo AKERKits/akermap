@@ -17,26 +17,24 @@
   </ui-gmap-markers>
 
   <ui-gmap-markers
+    ng-if="showFabLabWorkshops"
     models='fabLabMarkers'
+    events="fabLabMarkerEvents"
     coords="'self'"
     icon="'icon'"
-    click="onClick()"
   >
-    <ui-gmap-windows show="show" ng-cloak>
-          <table class="fablab-table" ng-non-bindable>
-            <tr><th>{{ 'WORKSHOP_NAME' | translate }}</th><td>{{fablabname}}</td></tr>
-            <tr><th>{{ 'WORKSHOP_AKER_KIT' | translate }}</th><td>{{akerkit}}</td></tr>
-            <tr><th>{{ 'WORKSHOP_SW' | translate }}</th><td>{{camsoftware}}</td></tr>
-            <tr><th>{{ 'WORKSHOP_CNC' | translate }}</th><td>{{cncrouter}}</td></tr>
-            <tr><th>{{ 'WORKSHOP_EMAIL' | translate }}</th><td><a target="_blank" href="mailto:{{email}}">{{email}}</a></td></tr>
-            <tr><th>{{ 'WORKSHOP_PHONE' | translate }}</th><td>{{phone}}</td></tr>
-            <tr><th>{{ 'WORKSHOP_URL' | translate }}</th><td><a target="_blank" href="{{website}}">{{website}}</a></td></tr>
-            <tr><th>{{ 'WORKSHOP_CONTACT' | translate }}</th><td>{{workshopcontactperson}}</td></tr>
-            <tr><th>{{ 'WORKSHOP_ADDRESS' | translate }}</th><td>{{streetaddresscitystatezip}}</td></tr>
-            <tr><th>{{ 'WORKSHOP_CAP' | translate }}</th><td>{{localattendeecapacity}}</td></tr>
-          </table>
-    </ui-gmap-windows>
   </ui-gmap-markers>
+
+  <ui-gmap-window
+    ng-if="fabLabInfoWindow.show"
+    coords='fabLabInfoWindow.coords'
+    show='fabLabInfoWindow.show'
+    templateUrl='fabLabInfoWindow.templateUrl'
+    templateParameter="fabLabInfoWindow.templateParameter"
+    closeClick='fabLabInfoWindow.closeClick()'
+    options='fabLabInfoWindow.options'
+    >
+</ui-gmap-window>
 
   <ui-gmap-marker
     ng-show="map.addResourceMarker.latitude"

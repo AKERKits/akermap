@@ -5,6 +5,8 @@ require('./fabLabDataService');
 require('./templates/akerMapDirective.html');
 require('./templates/markerInfoWindow.html');
 require('./templates/addResourceBox.html');
+require('./templates/fabLabInfoWindow.html');
+
 var styles = require('./map/styles/avocado.json');
 var categories = require('./categories');
 var _ = require('lodash');
@@ -19,6 +21,7 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
         require: '^main',
         templateUrl: require('./templates/akerMapDirective.html'),
         link: function($scope) {
+            $scope.fabLabMarkers = null;
 
             function hideAddResourceMarker() {
                 $scope.map.addResourceMarker.latitude = $scope.map.addResourceMarker.longitude = null;
@@ -88,6 +91,7 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
 
             function showAddResourceMarker(latitude, longitude) {
                 hideMarkerInfoWindow();
+                hideFabLabInfoWindow();
 
                 if ($scope.map.addResourceMarker.latitude && $scope.map.addResourceMarker.longitude) {
                     hideAddResourceMarker();
@@ -133,15 +137,22 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 $scope.markerInfoWindow.show = false;
             }
 
+            function hideFabLabInfoWindow() {
+                $scope.fabLabInfoWindow.show = false;
+            }
+
+            function reInitInfoWindowDisplay() {
+                // make sure the template content is updated by destroying the window first
+                hideMarkerInfoWindow();
+                hideFabLabInfoWindow();
+
+                hideAddResourceMarker(); // if the add resource marker was open, hide that as well
+                $scope.$apply();
+            }
+
             $scope.markerEvents = {
                 click: function (model, eventName, marker) {
-                    //$log.debug(marker);
-
-                    // make sure the template content is updated by destroying the window first
-                    hideMarkerInfoWindow();
-
-                    hideAddResourceMarker(); // if the add resource marker was open, hide that as well
-                    $scope.$apply();
+                    reInitInfoWindowDisplay();
 
                     // new coordinates and contents
                     $scope.markerInfoWindow.coords.longitude = marker.longitude;
@@ -166,6 +177,38 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 }
             };
 
+            $scope.fabLabMarkerEvents = {
+                click: function(model, eventName, marker) {
+                    reInitInfoWindowDisplay();
+
+                    // new coordinates and contents
+                    $scope.fabLabInfoWindow.coords.longitude = marker.longitude;
+                    $scope.fabLabInfoWindow.coords.latitude = marker.latitude;
+
+                    var url = marker.website;
+                    if (url.substr(0, 'http://'.length) !== 'http://') {
+                        url = 'http://' + url;
+                    }
+
+                    $scope.fabLabInfoWindow.templateParameter = {
+                        workshop: marker.fablabname,
+                        kit: marker.akerkit,
+                        software: marker.camsoftware,
+                        router: marker.cncrouter,
+                        email: $sanitize(marker.email),
+                        phone: marker.phone,
+                        url: $sanitize(url),
+                        contact: marker.workshopcontactperson,
+                        address: marker.streetaddresscitystatezip,
+                        capacity: +marker.localattendeecapacity
+                    };
+                    $scope.fabLabInfoWindow.show = true;
+
+                    //scope apply required because this event handler is outside of the angular domain
+                    $scope.$apply();
+                }
+            };
+
             $scope.markerInfoWindow = {
                 coords: {
                     longitude: null,
@@ -184,6 +227,24 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 }
             };
 
+            $scope.fabLabInfoWindow = {
+                coords: {
+                    longitude: null,
+                    latitude: null
+                },
+                show: false,
+                templateUrl: require('./templates/fabLabInfoWindow.html'),
+                options: {},
+                templateParameter: {},
+                closeClick: function() {
+                    $log.debug('close fablab window');
+                    hideFabLabInfoWindow();
+
+                    //scope apply required because this event handler is outside of the angular domain
+                    $scope.$apply();
+                }
+            };
+
             function updateMarkers() {
                 return mapData.get().then(function(list) {
                     $scope.markers = list;
@@ -193,6 +254,7 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
             $scope.$on('updateFilters', function() {
                 $log.debug('updating markers and refreshing map');
                 hideMarkerInfoWindow();
+                hideFabLabInfoWindow();
                 updateMarkers().then(function() {
                     $scope.map.refresh = true;
                 });
@@ -206,7 +268,8 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
             }).then(function(data) {
                 var map = data.map;
                 var maps = data.maps;
-                var fabLabMarkers = data.fabLabMarkers;
+
+                $scope.fabLabMarkers = data.fabLabMarkers;
 
                 angular.extend($scope.mapOptions, {
                     styles: styles,
@@ -227,51 +290,9 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
                 };
                 $scope.map.addResourceMarker.options.animation = maps.Animation.DROP;
 
-                $scope.markerInfoWindow.options.pixelOffset = new maps.Size(0, -36);
-
-
-                function geocodeFabLabMarkers(markers) {
-                    var geocoder = new maps.Geocoder();
-                    var icon = {
-                        url: require('./images/pins/fablab.svg'),
-                        size: new maps.Size(100, 100),
-                        scaledSize: new maps.Size(36, 36),
-                        anchor: new maps.Point(18, 36)
-                    };
-                    var promises = markers.map(function(marker) {
-                        var deferred = $q.defer();
-                        geocoder.geocode({
-                            'address': marker.streetaddresscitystatezip
-                        }, function(results, status) {
-                            if (status === maps.GeocoderStatus.OK) {
-                                var location = results[0].geometry.location;
-                                marker.latitude = location.lat();
-                                marker.longitude = location.lng();
-                                marker.icon = icon;
-                                marker.show = false;
-                                marker.onClick = function() {
-                                    marker.show = !marker.show;
-                                    $scope.$apply();
-                                };
-                                deferred.resolve(marker);
-                            } else {
-                                $log.warn('geocoding', marker.streetaddresscitystatezip, 'failed', status);
-                                deferred.resolve(null);
-                            }
-                        });
-                        return deferred.promise;
-                    });
-                    return $q.all(promises).then(function(markers) {
-                        return markers.filter(function(marker) {
-                            return marker !== null;
-                        });
-                    });
-                }
-
-                geocodeFabLabMarkers(fabLabMarkers).then(function(markers) {
-                    $log.debug('fablab markers', markers);
-                    $scope.fabLabMarkers = markers;
-                });
+                var offset = new maps.Size(0, -36);
+                $scope.markerInfoWindow.options.pixelOffset = offset;
+                $scope.fabLabInfoWindow.options.pixelOffset = offset;
 
                 angular.extend($scope.map, map);
             });
