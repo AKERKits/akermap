@@ -16,6 +16,26 @@
   >
   </ui-gmap-markers>
 
+  <ui-gmap-markers
+    ng-if="showFabLabWorkshops"
+    models='fabLabMarkers'
+    events="fabLabMarkerEvents"
+    coords="'self'"
+    icon="'icon'"
+  >
+  </ui-gmap-markers>
+
+  <ui-gmap-window
+    ng-if="fabLabInfoWindow.show"
+    coords='fabLabInfoWindow.coords'
+    show='fabLabInfoWindow.show'
+    templateUrl='fabLabInfoWindow.templateUrl'
+    templateParameter="fabLabInfoWindow.templateParameter"
+    closeClick='fabLabInfoWindow.closeClick()'
+    options='fabLabInfoWindow.options'
+    >
+</ui-gmap-window>
+
   <ui-gmap-marker
     ng-show="map.addResourceMarker.latitude"
     ng-if="map.addResourceMarker.latitude"

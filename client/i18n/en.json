@@ -65,5 +65,18 @@
 	"TAGLINE": "Urban Homesteading Kits",
 	"FILTER_EXPLANATION": "Find homesteading resources near you:",
 
-	"SEARCH_FOR_PLACE_TO_ADD": "Search for a place to add a resource"
+	"SEARCH_FOR_PLACE_TO_ADD": "Search for a place to add a resource",
+
+	"FAB_LAB_WORKSHOPS": "Fab Lab workshop locations",
+	
+	"WORKSHOP_NAME": "Fab Lab name",
+	"WORKSHOP_AKER_KIT": "AKER Kit",
+	"WORKSHOP_SW": "CAM software",
+	"WORKSHOP_CNC": "CNC router",
+	"WORKSHOP_EMAIL": "eMail",
+	"WORKSHOP_PHONE": "Phone",
+	"WORKSHOP_URL": "Website",
+	"WORKSHOP_CONTACT": "Workshop contact",
+	"WORKSHOP_ADDRESS": "Address",
+	"WORKSHOP_CAP": "Attendee capacity"
 }
