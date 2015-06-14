@@ -4,7 +4,6 @@
 @text-color: black;
 @burger-color: white;
 @burger-background-color: rgba(255,255,255,0.2);
-@igg-overlay-background-color: rgba(255,255,255,0.4);
 @container-background: #F7F7FA;
 @hover-color: #c94e50;
 @content-background: white;
@@ -25,32 +24,6 @@
   font-weight: normal;
 }
 
-.igg-overlay {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    font-size: 1.5em;
-    margin: 1em;
-    z-index: 4;
-    background-color: @igg-overlay-background-color;
-    padding: 0.2em;
-    -webkit-transition: -webkit-transform @menu-transition-duration;
-    transition: transform @menu-transition-duration;
-    text-decoration: none;
-
-    &:hover {
-        background-color: fadein(@igg-overlay-background-color, 20%);
-    }
-    img {
-        height: 2em;
-    }
-    span {
-        display: block;
-        font-size: x-small;
-        font-weight: bold;
-        color: @text-color;
-    }
-}
 
 .add-resource-box {
     margin-top: 1em;
@@ -80,10 +53,6 @@
     max-width: 50%;
   }
 
-  .igg-overlay {
-    font-size: 1em;
-    margin: 0.5em;
-  }
   .menu-button {
     font-size: 1em;
     margin: 0.5em;
@@ -91,9 +60,6 @@
 
   .menu-top {
     line-height: 15px;
-    .igg-link, .tagline {
-      display: none;
-    }
   }
 }
 
@@ -105,23 +71,6 @@
     width: 100%;
     position: absolute;
   }
-}
-
-.igg-link {
-    float: right;
-    span {
-        float: left;
-        &.igg-logo {
-            img {
-                height: 42px;
-            }
-        }
-        &.igg-phrase {
-            text-decoration: underline;
-            margin-left: 1em;
-        }
-
-    }
 }
 
 .add-resource-form {

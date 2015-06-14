@@ -9,7 +9,6 @@
 	"CATEGORY_OTHER": "Other: General Agricultural Supplies",
 
 	"AKER_LOGO_ALT": "The AKER logo",
-	"IGG_LOGO_ALT": "The IndieGoGo logo",
 	"TWITTER_LOGO_ALT": "The twitter logo",
 	"GITHUB_LOGO_ALT": "The github logo",
 	"FACEBOOK_LOGO_ALT": "The facebook logo",
@@ -60,15 +59,13 @@
 	"NAVIGATION_FORK_GITHUB": "Fork on github",
 	"NAVIGATION_SHARE_TWITTER": "Share on twitter",
 
-	"GET_YOUR_AKER_KITS_NOW": "Get your AKER Kit now on IndieGoGo!",
-	"GET_YOUR_AKER_KITS_NOW_SHORT": "Get your AKER Kit now!",
 	"TAGLINE": "Urban Homesteading Kits",
 	"FILTER_EXPLANATION": "Find homesteading resources near you:",
 
 	"SEARCH_FOR_PLACE_TO_ADD": "Search for a place to add a resource",
 
 	"FAB_LAB_WORKSHOPS": "Fab Lab workshop locations",
-	
+
 	"WORKSHOP_NAME": "Fab Lab name",
 	"WORKSHOP_AKER_KIT": "AKER Kit",
 	"WORKSHOP_SW": "CAM software",
