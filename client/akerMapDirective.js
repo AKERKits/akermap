@@ -250,7 +250,6 @@ function(uiGmapGoogleMapApi, geoLocationService, mapData, $log, $q, formModal, $
             }
 
             $scope.$watch('showFabLabWorkshops', function(newShow, oldShow) {
-                $log.debug('moo');
                 if(newShow !== oldShow && !newShow) {
                     hideFabLabInfoWindow();
                 }
